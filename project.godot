@@ -21,6 +21,14 @@ window/size/height=720
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 
+[global]
+
+emulate=false
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
 [physics]
 
 common/enable_pause_aware_picking=true
