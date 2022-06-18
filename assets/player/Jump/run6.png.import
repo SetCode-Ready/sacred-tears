@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/SmallHandleFilledGrey.png-afbced56778c31a610d58243e6ee3d6a.stex"
+path="res://.import/run6.png-13d0e357fee5f9b546e469b790cde7c2.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/joystick/SmallHandleFilledGrey.png"
-dest_files=[ "res://.import/SmallHandleFilledGrey.png-afbced56778c31a610d58243e6ee3d6a.stex" ]
+source_file="res://assets/player/Jump/run6.png"
+dest_files=[ "res://.import/run6.png-13d0e357fee5f9b546e469b790cde7c2.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Joystick.png-805825998366570be2e7b1822603fc45.stex"
+path="res://.import/run1.png-b373330838955ceef59feebeab63daeb.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/joystick/Joystick.png"
-dest_files=[ "res://.import/Joystick.png-805825998366570be2e7b1822603fc45.stex" ]
+source_file="res://assets/player/Jump/run1.png"
+dest_files=[ "res://.import/run1.png-b373330838955ceef59feebeab63daeb.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

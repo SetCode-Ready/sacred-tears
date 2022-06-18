@@ -1,33 +1,72 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scenes/player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://scripts/player.gd" type="Script" id=2]
-[ext_resource path="res://assets/joystick/SmallHandleFilled.png" type="Texture" id=3]
-[ext_resource path="res://assets/joystick/Joystick.png" type="Texture" id=4]
-[ext_resource path="res://scripts/joystick.gd" type="Script" id=5]
-[ext_resource path="res://assets/joystick/SmallHandleFilledGrey.png" type="Texture" id=6]
+[ext_resource path="res://assets/hud/buttons/left_button.png" type="Texture" id=3]
+[ext_resource path="res://assets/hud/buttons/left_button_pressed.png" type="Texture" id=4]
+[ext_resource path="res://assets/hud/buttons/switch_button.png" type="Texture" id=5]
+[ext_resource path="res://assets/hud/buttons/switch_button_pressed.png" type="Texture" id=6]
+[ext_resource path="res://assets/hud/buttons/right_button.png" type="Texture" id=7]
+[ext_resource path="res://assets/hud/buttons/right_button_pressed.png" type="Texture" id=8]
+[ext_resource path="res://assets/hud/buttons/up_button_pressed.png" type="Texture" id=9]
+[ext_resource path="res://assets/hud/buttons/up_button.png" type="Texture" id=10]
+[ext_resource path="res://assets/hud/buttons/attack_button_pressed.png" type="Texture" id=11]
+[ext_resource path="res://assets/hud/buttons/attack_button.png" type="Texture" id=12]
 
-[sub_resource type="CircleShape2D" id=1]
-radius = 50.0
+[sub_resource type="PhysicsMaterial" id=2]
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 821.5, 81 )
 
 [node name="Scenario" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 612, 298 )
-script = ExtResource( 2 )
+position = Vector2( 611, 585 )
 
-[node name="Control" type="Control" parent="."]
-margin_top = 516.0
-margin_right = 1280.0
-margin_bottom = 722.0
+[node name="Controllers" type="CanvasLayer" parent="."]
 
-[node name="Joystick" type="Sprite" parent="."]
-position = Vector2( 380, 522 )
-scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 4 )
-
-[node name="TouchScreenButton" type="TouchScreenButton" parent="Joystick"]
+[node name="LeftButton" type="TouchScreenButton" parent="Controllers"]
+position = Vector2( 20, 540 )
+scale = Vector2( 10, 10 )
 normal = ExtResource( 3 )
+pressed = ExtResource( 4 )
+passby_press = true
+action = "ui_left"
+
+[node name="RightButton" type="TouchScreenButton" parent="Controllers"]
+position = Vector2( 190, 540 )
+scale = Vector2( 10, 10 )
+normal = ExtResource( 7 )
+pressed = ExtResource( 8 )
+passby_press = true
+action = "ui_right"
+
+[node name="JumpButton" type="TouchScreenButton" parent="Controllers"]
+position = Vector2( 1163, 578 )
+scale = Vector2( 6.5, 6.5 )
+normal = ExtResource( 10 )
+pressed = ExtResource( 9 )
+passby_press = true
+action = "ui_accept"
+
+[node name="AttackButton" type="TouchScreenButton" parent="Controllers"]
+position = Vector2( 1088, 464 )
+scale = Vector2( 6.5, 6.5 )
+normal = ExtResource( 12 )
+pressed = ExtResource( 11 )
+passby_press = true
+action = "left_click"
+
+[node name="SwitchWaterTypeButton" type="TouchScreenButton" parent="Controllers"]
+position = Vector2( 1005, 578 )
+scale = Vector2( 6.5, 6.5 )
+normal = ExtResource( 5 )
 pressed = ExtResource( 6 )
-shape = SubResource( 1 )
-script = ExtResource( 5 )
+passby_press = true
+action = "right_click"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+physics_material_override = SubResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 569, 668 )
+shape = SubResource( 3 )
