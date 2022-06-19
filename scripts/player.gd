@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 onready var sprite = get_node("Sprite")
+onready var particles = get_node("jetpackParticles")
 
 const ACCELERATION = 512
 const MAX_SPEED = 320
@@ -23,6 +24,10 @@ func _physics_process(delta):
 			sprite.play("Run")
 		motion.x += x_input * ACCELERATION
 		motion.x = clamp(motion.x, -MAX_SPEED, MAX_SPEED)
+		if x_input > 0:
+			particles.position.x = -10 
+		else:  
+			particles.position.x = 14
 		sprite.flip_h = x_input < 0
 	else:
 		if not is_attacking:
@@ -34,20 +39,24 @@ func _physics_process(delta):
 	if Input.is_action_just_released("ui_accept"):
 		if did_first_jump == false and not is_on_floor():
 			did_first_jump = true
+		particles.emitting = false
 			
 	if Input.is_action_pressed("ui_accept"):
 		if is_on_floor():
 			did_first_jump = false
 			motion.y = -JUMP_FORCE
+			
 		if did_first_jump == true and not is_on_floor():
 			motion.y = -JUMP_FORCE
+			particles.emitting = true
 	
 	motion = move_and_slide(motion, Vector2.UP)
 	
 	if not is_on_floor():
 		if not is_attacking:
 			sprite.play("Jump")
-		
+
+
 	if Input.is_action_just_pressed("left_click") :
 		sprite.play("Attack")
 		is_attacking = true
