@@ -20,7 +20,7 @@ extents = Vector2( 821.5, 81 )
 [node name="Scenario" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 611, 585 )
+position = Vector2( 604, 999 )
 
 [node name="Controllers" type="CanvasLayer" parent="."]
 
@@ -68,5 +68,5 @@ action = "right_click"
 physics_material_override = SubResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2( 569, 668 )
+position = Vector2( 819, 1109 )
 shape = SubResource( 3 )
