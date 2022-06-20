@@ -3,6 +3,7 @@ extends KinematicBody2D
 onready var sprite = get_node("Sprite")
 onready var particles = get_node("JetpackParticles")
 onready var bulletspawn = get_node("BulletSpawn")
+onready var sacredEffect = get_node("SacredEffect")
 const bulletPath = preload("res://scenes/Bullet.tscn")
 onready var initial_scale = scale
 
@@ -141,4 +142,4 @@ func player_shoot(delta):
 func change_type_bullet():
 	if Input.is_action_just_pressed("change_type_bullet"):
 		is_normal_bullet = !is_normal_bullet
-		
+		sacredEffect.visible = !is_normal_bullet
