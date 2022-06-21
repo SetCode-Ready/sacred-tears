@@ -1,7 +1,10 @@
 extends KinematicBody2D
 
 onready var sprite = get_node("Sprite")
-onready var particles = get_node("jetpackParticles")
+onready var particles = get_node("JetpackParticles")
+onready var bulletspawn = get_node("BulletSpawn")
+onready var sacredEffect = get_node("SacredEffect")
+const bulletPath = preload("res://scenes/Bullet.tscn")
 onready var initial_scale = scale
 
 const ACCELERATION = 512
@@ -18,6 +21,11 @@ var is_attacking = false
 
 var is_moving_left = false
 
+var is_shooting = false
+
+var is_moving = false
+
+var is_normal_bullet = true
 
 func _physics_process(delta):
 	
@@ -29,25 +37,37 @@ func _physics_process(delta):
 	
 	player_attack()
 	
+	player_shoot(delta)
+	
+	change_type_bullet()
+
 
 func player_move(delta):
 	var x_input = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left") 
 	
 	if x_input != 0:
-		if not is_attacking:
+		is_moving = true
+		if not is_attacking or not is_shooting:
 			sprite.play("Run")
 		motion.x += x_input * ACCELERATION
 		motion.x = clamp(motion.x, -MAX_SPEED, MAX_SPEED)
+		bulletspawn.position.y = -15
 		if x_input > 0:
 			is_moving_left = false
+			bulletspawn.position.x = 20
 			particles.position.x = -10 
 		else:
 			is_moving_left = true
+			bulletspawn.position.x = -15
 			particles.position.x = 14
 #		sprite.flip_h = x_input < 0
 	else:
-		if not is_attacking:
+		is_moving = false
+		bulletspawn.position.y = -20
+		if ((not is_attacking ) or (not is_shooting)):
 			sprite.play("Idle")
+
+			
 		motion.x = lerp(motion.x, 0, FRICTION)
 		
 	motion.y += GRAVITY * delta
@@ -93,3 +113,33 @@ func player_attack():
 func _on_Sprite_animation_finished():
 	if sprite.animation == "Attack":
 		is_attacking = false
+	if sprite.animation == "IdleAttack":
+		is_shooting = false
+
+func player_shoot(delta):
+	# tecla z atira
+	if Input.is_action_just_pressed("shoot"):
+		is_shooting = true
+		if not is_moving:
+			sprite.play("IdleAttack")
+		
+		var bullet = bulletPath.instance()
+		get_parent().add_child(bullet)
+		
+		bullet.is_normal = is_normal_bullet
+		
+		bullet.position = bulletspawn.global_position
+		bullet.speed = MAX_SPEED + 100
+		
+		if is_moving_left:
+			bullet.rotation_degrees = 0
+			bullet.velocity.x = -bullet.speed * delta
+		else:
+			bullet.rotation_degrees = 180
+			bullet.velocity.x = bullet.speed * delta
+
+
+func change_type_bullet():
+	if Input.is_action_just_pressed("change_type_bullet"):
+		is_normal_bullet = !is_normal_bullet
+		sacredEffect.visible = !is_normal_bullet
