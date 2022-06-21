@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=2]
+[gd_scene load_steps=83 format=2]
 
 [ext_resource path="res://assets/player/Atack/atack12.png" type="Texture" id=1]
 [ext_resource path="res://assets/player/Atack/atack1.png" type="Texture" id=2]
@@ -52,6 +52,282 @@
 [ext_resource path="res://assets/player/IdleAtack/IdleJepack6.png" type="Texture" id=50]
 [ext_resource path="res://assets/player/sacred_effect.png" type="Texture" id=51]
 
+[sub_resource type="AnimationNodeAnimation" id=16]
+animation = "Attack"
+
+[sub_resource type="AnimationNodeAnimation" id=17]
+animation = "Death"
+
+[sub_resource type="AnimationNodeAnimation" id=18]
+animation = "Idle"
+
+[sub_resource type="AnimationNodeAnimation" id=19]
+animation = "IdleAttack"
+
+[sub_resource type="AnimationNodeAnimation" id=20]
+animation = "Jump"
+
+[sub_resource type="AnimationNodeAnimation" id=21]
+animation = "Run"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=22]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=23]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=24]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=25]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=26]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=27]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=28]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=29]
+switch_mode = 2
+auto_advance = true
+priority = 0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=30]
+
+[sub_resource type="AnimationNodeStateMachine" id=31]
+states/Attack/node = SubResource( 16 )
+states/Attack/position = Vector2( 168, 291 )
+states/Death/node = SubResource( 17 )
+states/Death/position = Vector2( -54, 227 )
+states/Idle/node = SubResource( 18 )
+states/Idle/position = Vector2( 168, 152 )
+states/IdleAttack/node = SubResource( 19 )
+states/IdleAttack/position = Vector2( -7, 76 )
+states/Jump/node = SubResource( 20 )
+states/Jump/position = Vector2( 459, 235 )
+states/Run/node = SubResource( 21 )
+states/Run/position = Vector2( 476, 47 )
+transitions = [ "Idle", "Attack", SubResource( 22 ), "Attack", "Idle", SubResource( 23 ), "Idle", "Run", SubResource( 24 ), "Run", "Idle", SubResource( 25 ), "Idle", "Death", SubResource( 26 ), "Idle", "IdleAttack", SubResource( 27 ), "IdleAttack", "Idle", SubResource( 28 ), "IdleAttack", "Run", SubResource( 29 ), "Run", "Attack", SubResource( 30 ) ]
+start_node = "Idle"
+end_node = "Death"
+graph_offset = Vector2( -270.581, -35.7835 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=32]
+
+[sub_resource type="Animation" id=11]
+resource_name = "Attack"
+length = 1.08
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "Attack" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.09, 0.18, 0.27, 0.36, 0.45, 0.54, 0.63, 0.72, 0.81, 0.9, 0.99 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "Death"
+length = 1.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "Death" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "Idle"
+length = 0.7
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "Idle" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.12, 0.24, 0.36, 0.48, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5 ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "IdleAttack"
+length = 0.7
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "IdleAttack" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.12, 0.24, 0.36, 0.48, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5 ]
+}
+
+[sub_resource type="Animation" id=14]
+resource_name = "Jump"
+length = 0.3
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "Jump" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2 ]
+}
+
+[sub_resource type="Animation" id=10]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:speed_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ "Idle" ]
+}
+
+[sub_resource type="Animation" id=15]
+resource_name = "Run"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "Run" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+}
+
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
 "frames": [ ExtResource( 14 ), ExtResource( 13 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 39 ), ExtResource( 42 ) ],
@@ -64,14 +340,14 @@ animations = [ {
 "name": "Run",
 "speed": 10.0
 }, {
+"frames": [ ExtResource( 19 ), ExtResource( 23 ), ExtResource( 18 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 17 ), ExtResource( 22 ), ExtResource( 32 ), ExtResource( 34 ), ExtResource( 36 ), ExtResource( 30 ), ExtResource( 33 ), ExtResource( 35 ), ExtResource( 31 ) ],
+"loop": true,
+"name": "Death",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 41 ), ExtResource( 40 ), ExtResource( 43 ) ],
 "loop": true,
 "name": "Jump",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 47 ), ExtResource( 45 ), ExtResource( 46 ), ExtResource( 48 ), ExtResource( 49 ), ExtResource( 50 ) ],
-"loop": true,
-"name": "IdleAttack",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 11 ), ExtResource( 10 ), ExtResource( 12 ), ExtResource( 1 ) ],
@@ -79,10 +355,10 @@ animations = [ {
 "name": "Attack",
 "speed": 20.0
 }, {
-"frames": [ ExtResource( 19 ), ExtResource( 23 ), ExtResource( 18 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 17 ), ExtResource( 22 ), ExtResource( 32 ), ExtResource( 34 ), ExtResource( 36 ), ExtResource( 30 ), ExtResource( 33 ), ExtResource( 35 ), ExtResource( 31 ) ],
+"frames": [ ExtResource( 47 ), ExtResource( 45 ), ExtResource( 46 ), ExtResource( 48 ), ExtResource( 49 ), ExtResource( 50 ) ],
 "loop": true,
-"name": "Death",
-"speed": 5.0
+"name": "IdleAttack",
+"speed": 7.0
 } ]
 
 [sub_resource type="CanvasItemMaterial" id=7]
@@ -99,8 +375,8 @@ particles_anim_v_frames = 1
 particles_anim_loop = true
 
 [sub_resource type="Gradient" id=3]
-offsets = PoolRealArray( 0.223602, 1 )
-colors = PoolColorArray( 0, 0.949219, 0.926971, 1, 1, 1, 1, 1 )
+offsets = PoolRealArray( 0.784884, 1 )
+colors = PoolColorArray( 0.00549316, 0.703125, 0.686774, 1, 1, 1, 1, 1 )
 
 [sub_resource type="GradientTexture" id=4]
 gradient = SubResource( 3 )
@@ -120,7 +396,7 @@ linear_accel = -17.64
 radial_accel = 9.8
 tangential_accel = 39.04
 damping = 70.59
-color = Color( 0, 0.521569, 0.803922, 1 )
+color = Color( 0, 0.87451, 0.941176, 1 )
 color_ramp = SubResource( 4 )
 anim_speed = 9.22
 
@@ -133,13 +409,32 @@ scale = Vector2( 4, 4 )
 collision_mask = 7
 script = ExtResource( 44 )
 __meta__ = {
+"_edit_horizontal_guides_": [ -107.0 ],
 "_edit_vertical_guides_": [ -60.0, 90.0 ]
 }
 
-[node name="Sprite" type="AnimatedSprite" parent="."]
-position = Vector2( 4, -21 )
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 31 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 32 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../SpriteAnimation")
+anims/Attack = SubResource( 11 )
+anims/Death = SubResource( 12 )
+anims/Idle = SubResource( 9 )
+anims/IdleAttack = SubResource( 13 )
+anims/Jump = SubResource( 14 )
+anims/RESET = SubResource( 10 )
+anims/Run = SubResource( 15 )
+
+[node name="SpriteAnimation" type="AnimatedSprite" parent="."]
+position = Vector2( -28.5, -43.75 )
 frames = SubResource( 2 )
-animation = "IdleAttack"
+animation = "Death"
+frame = 10
+centered = false
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 7.5, -56 )
@@ -166,9 +461,6 @@ position = Vector2( 22.5, -21.5 )
 
 [node name="SacredEffect" type="Sprite" parent="."]
 visible = false
-modulate = Color( 1, 1, 1, 0.705882 )
-position = Vector2( -1, -49.75 )
-scale = Vector2( 0.76, 0.76 )
+position = Vector2( 0.46, -41.6113 )
+scale = Vector2( 0.44, 0.44 )
 texture = ExtResource( 51 )
-
-[connection signal="animation_finished" from="Sprite" to="." method="_on_Sprite_animation_finished"]
