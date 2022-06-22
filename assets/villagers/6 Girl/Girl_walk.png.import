@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/IdleJepack2.png-de3b675278815942a1853cc5957d7fd8.stex"
+path="res://.import/Girl_walk.png-0c09dc536bf4cdc4ace84ee421b3acea.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player/IdleAtack/IdleJepack2.png"
-dest_files=[ "res://.import/IdleJepack2.png-de3b675278815942a1853cc5957d7fd8.stex" ]
+source_file="res://assets/villagers/6 Girl/Girl_walk.png"
+dest_files=[ "res://.import/Girl_walk.png-0c09dc536bf4cdc4ace84ee421b3acea.stex" ]
 
 [params]
 
