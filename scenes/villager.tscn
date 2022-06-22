@@ -1,0 +1,330 @@
+[gd_scene load_steps=52 format=2]
+
+[ext_resource path="res://assets/villagers/1 Old_man/Old_man_walk.png" type="Texture" id=1]
+[ext_resource path="res://assets/villagers/3 Man/Man_walk.png" type="Texture" id=2]
+[ext_resource path="res://assets/villagers/2 Old_woman/Old_woman_walk.png" type="Texture" id=3]
+[ext_resource path="res://assets/villagers/6 Girl/Girl_walk.png" type="Texture" id=4]
+[ext_resource path="res://assets/villagers/4 Woman/Woman_walk.png" type="Texture" id=5]
+[ext_resource path="res://assets/villagers/5 Boy/Boy_walk.png" type="Texture" id=6]
+[ext_resource path="res://scripts/villager.gd" type="Script" id=7]
+
+[sub_resource type="Gradient" id=39]
+offsets = PoolRealArray( 0, 0.216535, 0.527559, 1 )
+colors = PoolColorArray( 1, 0, 0, 0.513726, 0.956863, 0.305882, 0, 0.388235, 1, 0.913725, 0.027451, 1, 1, 0.989362, 0.880289, 1 )
+
+[sub_resource type="GradientTexture" id=40]
+gradient = SubResource( 39 )
+
+[sub_resource type="ParticlesMaterial" id=41]
+trail_divisor = 5
+emission_shape = 1
+emission_sphere_radius = 20.88
+flag_disable_z = true
+gravity = Vector3( 0, -50, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+radial_accel = -29.59
+radial_accel_random = 1.0
+damping = 15.34
+damping_random = 0.52
+angle = 291.9
+angle_random = 0.51
+scale = 4.0
+scale_random = 1.0
+color_ramp = SubResource( 40 )
+
+[sub_resource type="AtlasTexture" id=32]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 0, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=33]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 48, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=34]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 96, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=35]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 144, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=36]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 192, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=37]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 240, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=20]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=21]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 48, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=22]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 96, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=23]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 144, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=24]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 192, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=25]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 240, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=26]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=27]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 48, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=28]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 96, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=29]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 144, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=30]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 192, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=31]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 240, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 48, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 96, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 144, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 192, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=6]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 240, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=8]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=9]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 48, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=10]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 96, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=11]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 144, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=12]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 192, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=13]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 240, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=14]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=15]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 48, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=16]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 96, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=17]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 144, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=18]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 192, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=19]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 240, 0, 48, 48 )
+
+[sub_resource type="SpriteFrames" id=7]
+animations = [ {
+"frames": [ SubResource( 32 ), SubResource( 33 ), SubResource( 34 ), SubResource( 35 ), SubResource( 36 ), SubResource( 37 ) ],
+"loop": true,
+"name": "BOY",
+"speed": 15.0
+}, {
+"frames": [ SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ) ],
+"loop": true,
+"name": "WOMAN",
+"speed": 15.0
+}, {
+"frames": [ SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ) ],
+"loop": true,
+"name": "GIRL",
+"speed": 15.0
+}, {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
+"loop": true,
+"name": "OLDMAN",
+"speed": 15.0
+}, {
+"frames": [ SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ) ],
+"loop": true,
+"name": "MAN",
+"speed": 15.0
+}, {
+"frames": [ SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ) ],
+"loop": true,
+"name": "OLDWOMAN",
+"speed": 15.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=45]
+extents = Vector2( 14.5, 47.25 )
+
+[sub_resource type="Gradient" id=42]
+offsets = PoolRealArray( 0, 0.984252 )
+colors = PoolColorArray( 0.914063, 0.32135, 0, 1, 0.952941, 0.952941, 0.0431373, 1 )
+
+[sub_resource type="GradientTexture" id=43]
+gradient = SubResource( 42 )
+
+[sub_resource type="ParticlesMaterial" id=44]
+trail_divisor = 2
+emission_shape = 2
+emission_box_extents = Vector3( 20, 10, 1 )
+flag_disable_z = true
+direction = Vector3( 0, -2, 0 )
+spread = 0.0
+gravity = Vector3( 0, -10, 0 )
+initial_velocity = 54.06
+initial_velocity_random = 0.21
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 10.81
+damping = 25.67
+scale = 3.0
+scale_random = 1.0
+color = Color( 1, 1, 1, 0.886275 )
+color_ramp = SubResource( 43 )
+
+[node name="villager" type="KinematicBody2D"]
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_vertical_guides_": [ 98.0 ]
+}
+
+[node name="FireParticlesBack" type="Particles2D" parent="."]
+position = Vector2( -10, -54 )
+amount = 600
+lifetime = 1.5
+preprocess = 15.48
+speed_scale = 1.83
+explosiveness = 0.08
+randomness = 0.12
+process_material = SubResource( 41 )
+
+[node name="Sprite" type="AnimatedSprite" parent="."]
+position = Vector2( 26, -19 )
+scale = Vector2( 4, 4 )
+frames = SubResource( 7 )
+animation = "GIRL"
+frame = 4
+playing = true
+centered = false
+offset = Vector2( -21.25, -27.75 )
+
+[node name="Colision" type="CollisionShape2D" parent="."]
+position = Vector2( -3, -1 )
+scale = Vector2( 1, 1.3 )
+shape = SubResource( 45 )
+
+[node name="FireParticlesFront" type="Particles2D" parent="."]
+position = Vector2( -3, -13 )
+amount = 30
+lifetime = 0.99
+preprocess = 19.35
+speed_scale = 1.66
+explosiveness = 0.32
+randomness = 0.47
+fract_delta = false
+process_material = SubResource( 44 )
+
+[node name="RayCastR" type="RayCast2D" parent="."]
+position = Vector2( 13, 52 )
+rotation = -1.5708
+enabled = true
+cast_to = Vector2( 0, 5 )
+
+[node name="RayCastL" type="RayCast2D" parent="."]
+position = Vector2( -19, 52 )
+rotation = 1.5708
+enabled = true
+cast_to = Vector2( 0, 5 )
