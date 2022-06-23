@@ -366,4 +366,5 @@ cell_size = Vector2( 24, 24 )
 cell_quadrant_size = 10
 cell_custom_transform = Transform2D( 24, 0, 0, 24, 0, 0 )
 show_collision = true
+collision_layer = 2
 format = 1

@@ -21,5 +21,6 @@ func _physics_process(delta):
 	translate(velocity)
 
 
-func _on_Bullet_area_entered(area):
+
+func _on_Bullet_body_entered(body):
 	queue_free()

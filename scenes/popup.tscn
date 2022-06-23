@@ -137,6 +137,7 @@ tracks/4/keys = {
 script = ExtResource( 2 )
 
 [node name="opening_area" type="Area2D" parent="."]
+collision_layer = 2
 
 [node name="collision" type="CollisionShape2D" parent="opening_area"]
 shape = SubResource( 1 )
