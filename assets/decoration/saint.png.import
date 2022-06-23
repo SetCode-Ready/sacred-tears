@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/VillageProp.png-c099b36a6b0c818bd6438426f52b47ec.stex"
+path="res://.import/saint.png-b2783f5a5b00d3c6a4cb2cb88238ede2.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/decoration/VillageProp.png"
-dest_files=[ "res://.import/VillageProp.png-c099b36a6b0c818bd6438426f52b47ec.stex" ]
+source_file="res://assets/decoration/saint.png"
+dest_files=[ "res://.import/saint.png-b2783f5a5b00d3c6a4cb2cb88238ede2.stex" ]
 
 [params]
 

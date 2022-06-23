@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Arachne_Walk.png-f69d4428a6b4e618ca159fb997be1038.stex"
+path="res://.import/Arachne_Attack.png-5e75ddec695f96710d6a98f97099dd79.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/arachne/Arachne_Walk.png"
-dest_files=[ "res://.import/Arachne_Walk.png-f69d4428a6b4e618ca159fb997be1038.stex" ]
+source_file="res://assets/enemies/arachne/Arachne_Attack.png"
+dest_files=[ "res://.import/Arachne_Attack.png-5e75ddec695f96710d6a98f97099dd79.stex" ]
 
 [params]
 

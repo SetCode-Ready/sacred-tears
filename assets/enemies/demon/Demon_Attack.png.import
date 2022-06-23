@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/VillageProp.png-c099b36a6b0c818bd6438426f52b47ec.stex"
+path="res://.import/Demon_Attack.png-6798392d59c840af851ff6137a986ac9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/decoration/VillageProp.png"
-dest_files=[ "res://.import/VillageProp.png-c099b36a6b0c818bd6438426f52b47ec.stex" ]
+source_file="res://assets/enemies/demon/Demon_Attack.png"
+dest_files=[ "res://.import/Demon_Attack.png-6798392d59c840af851ff6137a986ac9.stex" ]
 
 [params]
 

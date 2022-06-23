@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/VillageProp.png-c099b36a6b0c818bd6438426f52b47ec.stex"
+path="res://.import/white_box.png-481a406d045cc79f9546184285d3011d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/decoration/VillageProp.png"
-dest_files=[ "res://.import/VillageProp.png-c099b36a6b0c818bd6438426f52b47ec.stex" ]
+source_file="res://assets/decoration/white_box.png"
+dest_files=[ "res://.import/white_box.png-481a406d045cc79f9546184285d3011d.stex" ]
 
 [params]
 

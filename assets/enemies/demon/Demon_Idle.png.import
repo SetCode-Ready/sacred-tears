@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/VillageProp.png-c099b36a6b0c818bd6438426f52b47ec.stex"
+path="res://.import/Demon_Idle.png-94509831f5444e2b49fcf069e61d633b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/decoration/VillageProp.png"
-dest_files=[ "res://.import/VillageProp.png-c099b36a6b0c818bd6438426f52b47ec.stex" ]
+source_file="res://assets/enemies/demon/Demon_Idle.png"
+dest_files=[ "res://.import/Demon_Idle.png-94509831f5444e2b49fcf069e61d633b.stex" ]
 
 [params]
 
