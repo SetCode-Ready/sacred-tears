@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/IdleJepack2.png-de3b675278815942a1853cc5957d7fd8.stex"
+path="res://.import/pause_button.png-2f7a96fc26b71bb1aa9c17a8c48614b2.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player/IdleAtack/IdleJepack2.png"
-dest_files=[ "res://.import/IdleJepack2.png-de3b675278815942a1853cc5957d7fd8.stex" ]
+source_file="res://assets/hud/buttons/pause_button.png"
+dest_files=[ "res://.import/pause_button.png-2f7a96fc26b71bb1aa9c17a8c48614b2.stex" ]
 
 [params]
 

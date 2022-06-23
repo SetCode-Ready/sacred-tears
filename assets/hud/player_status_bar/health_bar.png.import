@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/IdleJepack2.png-de3b675278815942a1853cc5957d7fd8.stex"
+path="res://.import/health_bar.png-d331fab8b90158ada62550104e6adf4d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player/IdleAtack/IdleJepack2.png"
-dest_files=[ "res://.import/IdleJepack2.png-de3b675278815942a1853cc5957d7fd8.stex" ]
+source_file="res://assets/hud/player_status_bar/health_bar.png"
+dest_files=[ "res://.import/health_bar.png-d331fab8b90158ada62550104e6adf4d.stex" ]
 
 [params]
 

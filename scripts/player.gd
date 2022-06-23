@@ -29,14 +29,14 @@ var is_moving = false
 var is_normal_bullet = true
 
 
-func _ready():
-	$AnimationTree.get("parameters/playback")
 
 func _physics_process(delta):
 	
 	player_move(delta)
 	
 	detect_turn_around()
+	
+	play_jump_animation()
 	
 	player_attack()
 	
@@ -46,7 +46,6 @@ func _physics_process(delta):
 
 
 func player_move(delta):
-
 	var x_input = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left") 
 	
 	if x_input != 0:
@@ -98,7 +97,6 @@ func player_jump():
 			motion.y = -JUMP_FORCE
 			can_double_jump = false
 		
-		play_jump_animation()
 		
 
 func play_jump_animation():

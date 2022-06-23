@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/IdleJepack2.png-de3b675278815942a1853cc5957d7fd8.stex"
+path="res://.import/Boy.png-5f2b15bff919a9ca3140c27c323340b5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player/IdleAtack/IdleJepack2.png"
-dest_files=[ "res://.import/IdleJepack2.png-de3b675278815942a1853cc5957d7fd8.stex" ]
+source_file="res://assets/villagers/5 Boy/Boy.png"
+dest_files=[ "res://.import/Boy.png-5f2b15bff919a9ca3140c27c323340b5.stex" ]
 
 [params]
 

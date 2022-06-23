@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/IdleJepack2.png-de3b675278815942a1853cc5957d7fd8.stex"
+path="res://.import/Old_woman.png-acd07e9d5e25b1938f934fe832671ccd.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player/IdleAtack/IdleJepack2.png"
-dest_files=[ "res://.import/IdleJepack2.png-de3b675278815942a1853cc5957d7fd8.stex" ]
+source_file="res://assets/villagers/2 Old_woman/Old_woman.png"
+dest_files=[ "res://.import/Old_woman.png-acd07e9d5e25b1938f934fe832671ccd.stex" ]
 
 [params]
 
