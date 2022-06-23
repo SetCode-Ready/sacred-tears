@@ -1,8 +1,7 @@
 extends KinematicBody2D
 
 const ACCELERATION = 512
-export var on_fire = true
-export var max_speed = 320
+
 const FRICTION = 1
 const GRAVITY = 2000
 var motion = Vector2.ZERO
@@ -11,6 +10,9 @@ var is_right = true
 var direction_valuant = 1
 
 export (int, 'OLDMAN', 'MAN', 'OLDWOMAN', 'WOMAN', 'BOY', 'GIRL') var type_villager = false
+export var on_fire = true
+export var max_speed = 320
+export var enable_colision = true
 
 #NAME  ,  POSITION.Y   SCALE.Y
 var list_animation = {
@@ -43,6 +45,7 @@ func _ready():
 func _process(delta):
 	$FireParticlesBack.emitting = on_fire
 	$FireParticlesFront.emitting = on_fire
+	$Colision.disabled = !enable_colision
 	
 	if $RayCastR.is_colliding():
 		is_right = false
