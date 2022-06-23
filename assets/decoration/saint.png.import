@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Arachne_Walk.png-f69d4428a6b4e618ca159fb997be1038.stex"
+path="res://.import/saint.png-b2783f5a5b00d3c6a4cb2cb88238ede2.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/arachne/Arachne_Walk.png"
-dest_files=[ "res://.import/Arachne_Walk.png-f69d4428a6b4e618ca159fb997be1038.stex" ]
+source_file="res://assets/decoration/saint.png"
+dest_files=[ "res://.import/saint.png-b2783f5a5b00d3c6a4cb2cb88238ede2.stex" ]
 
 [params]
 

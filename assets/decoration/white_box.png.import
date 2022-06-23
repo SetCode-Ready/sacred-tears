@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Arachne_Idle.png-0484ab3f63689e911aa6c2de27a7e3d7.stex"
+path="res://.import/white_box.png-481a406d045cc79f9546184285d3011d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/arachne/Arachne_Idle.png"
-dest_files=[ "res://.import/Arachne_Idle.png-0484ab3f63689e911aa6c2de27a7e3d7.stex" ]
+source_file="res://assets/decoration/white_box.png"
+dest_files=[ "res://.import/white_box.png-481a406d045cc79f9546184285d3011d.stex" ]
 
 [params]
 
