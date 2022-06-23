@@ -1,15 +1,16 @@
 extends KinematicBody2D
 
 const ACCELERATION = 512
-const MAX_SPEED = 320
+export var on_fire = true
+export var max_speed = 320
 const FRICTION = 1
 const GRAVITY = 2000
 var motion = Vector2.ZERO
-
+var num
 var is_right = true
 var direction_valuant = 1
 
-enum {OLDMAN, MAN, OLDWOMAN, WOMAN, BOY, GIRL}
+export (int, 'OLDMAN', 'MAN', 'OLDWOMAN', 'WOMAN', 'BOY', 'GIRL') var type_villager = false
 
 #NAME  ,  POSITION.Y   SCALE.Y
 var list_animation = {
@@ -22,9 +23,13 @@ var list_animation = {
 }
 
 func _ready():
-	var rng = RandomNumberGenerator.new();
-	rng.randomize();
-	var num = rng.randi_range(0, 5)
+	if typeof(type_villager) == TYPE_BOOL:
+		var rng = RandomNumberGenerator.new();
+		rng.randomize();
+		num = rng.randi_range(0, 5)
+	else:
+		num = type_villager
+	
 	$FireParticlesBack.position.y = -19 if num > 3 else -54
 	
 	$Sprite.play(list_animation[num][0])
@@ -36,6 +41,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	$FireParticlesBack.emitting = on_fire
+	$FireParticlesFront.emitting = on_fire
+	
 	if $RayCastR.is_colliding():
 		is_right = false
 	if $RayCastL.is_colliding():
@@ -51,7 +59,7 @@ func _process(delta):
 	
 	direction_valuant = 1 if is_right else -1
 	motion.x += ACCELERATION * direction_valuant
-	motion.x = clamp(motion.x, -MAX_SPEED, MAX_SPEED)
+	motion.x = clamp(motion.x, -max_speed, max_speed)
 	
 	motion.y += GRAVITY * delta
 	motion = move_and_slide(motion, Vector2.UP)

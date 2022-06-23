@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 onready var particles = get_node("JetpackParticles")
+onready var timer_particle = get_node("timerParticle")
 onready var bulletspawn = get_node("BulletSpawn")
 onready var sacredEffect = get_node("SacredEffect")
 onready var state_machine = $AnimationTree.get("parameters/playback")
@@ -45,9 +46,7 @@ func _physics_process(delta):
 
 
 func player_move(delta):
-	if is_on_floor():
-		particles.emitting = false
-	
+
 	var x_input = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left") 
 	
 	if x_input != 0:
@@ -61,10 +60,15 @@ func player_move(delta):
 			is_moving_left = false
 			bulletspawn.position.x = 20
 			particles.position.x = -10 
+			particles.process_material.gravity.x = -40
+			particles.process_material.tangential_accel = 100
 		else:
 			is_moving_left = true
 			bulletspawn.position.x = -15
 			particles.position.x = 14
+			particles.process_material.gravity.x = 90
+			particles.process_material.tangential_accel = -100
+			
 	else:
 		is_moving = false
 		bulletspawn.position.y = -20
@@ -90,6 +94,7 @@ func player_jump():
 			
 		if not is_on_floor() and can_double_jump and Input.is_action_just_pressed("ui_accept"):
 			particles.emitting = true
+			timer_particle.start()
 			motion.y = -JUMP_FORCE
 			can_double_jump = false
 		
@@ -144,3 +149,7 @@ func change_type_bullet():
 		is_normal_bullet = !is_normal_bullet
 		sacredEffect.visible = !is_normal_bullet
 
+
+
+func _on_timerParticle_timeout():
+	particles.emitting = false

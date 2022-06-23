@@ -32,8 +32,8 @@ polygon = PoolVector2Array( -27, 1105, 2, 1118, 5, -9, 3386, -3, 11125, -2, 1115
 [node name="portal" parent="." instance=ExtResource( 5 )]
 position = Vector2( 10710, 877 )
 
-[node name="village_props" parent="." instance=ExtResource( 6 )]
-tile_data = PoolIntArray( 196633, 1, 0, 2097204, 5, 0, 2228425, 5, 0, 2293818, 14, 0, 2293898, 17, 0, 2293903, 16, 0, 2424895, 3, 0, 2424989, 17, 0, 2490539, 12, 0, 2490577, 12, 0, 2555999, 13, 0, 2556001, 17, 0, 2556103, 3, 0, 2556107, 1, 0, 2556110, 3, 0 )
-
 [node name="villager" parent="." instance=ExtResource( 7 )]
 position = Vector2( 3898, 929 )
+
+[node name="village_props" parent="." instance=ExtResource( 6 )]
+tile_data = PoolIntArray( 196633, 1, 0, 1179732, 15, 0, 1245273, 14, 0, 1245274, 12, 0, 1245276, 20, 0, 1245284, 1, 0, 1245291, 1, 0, 1310806, 18, 0, 1310815, 21, 0, 1310816, 23, 0, 1310817, 22, 0, 1310819, 23, 0, 1310822, 22, 0, 1310824, 21, 0, 1310826, 23, 0, 2228352, 1, 0 )
