@@ -493,6 +493,8 @@ position = Vector2( 0.46, -41.6113 )
 scale = Vector2( 0.44, 0.44 )
 texture = ExtResource( 51 )
 
+[node name="Controllers" parent="." instance=ExtResource( 52 )]
+
 [node name="timerParticle" type="Timer" parent="."]
 wait_time = 0.3
 
