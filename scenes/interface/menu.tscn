@@ -1,0 +1,204 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://assets/menu/Bubbles/bubble_3.png" type="Texture" id=1]
+[ext_resource path="res://assets/menu/SacredT-Player-Art.png" type="Texture" id=2]
+[ext_resource path="res://icon.png" type="Texture" id=3]
+[ext_resource path="res://scenes/interface/menu_tilemap.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scripts/menu.gd" type="Script" id=5]
+
+[sub_resource type="ParticlesMaterial" id=1]
+emission_shape = 1
+emission_sphere_radius = 68.45
+flag_disable_z = true
+direction = Vector3( 0, -10, 0 )
+spread = 62.03
+flatness = 0.18
+gravity = Vector3( 3, -12, 0 )
+angular_velocity = 5.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 3.8
+scale = 2.0
+scale_random = 1.0
+
+[sub_resource type="Shader" id=2]
+code = "shader_type canvas_item;
+
+// Gonkee's smoke shader for Godot 3 - full tutorial https://youtu.be/ZkeRKXCoJNo
+// If you use this shader, I would prefer it if you gave credit to me and my channel
+
+uniform vec2 center = vec2(0.5, 0.8);
+
+uniform int OCTAVES = 6;
+
+float rand(vec2 coord){
+	return fract(sin(dot(coord, vec2(12.9898, 78.233)))* 43758.5453123);
+}
+
+float noise(vec2 coord){
+	vec2 i = floor(coord);
+	vec2 f = fract(coord);
+
+	// 4 corners of a rectangle surrounding our point
+	float a = rand(i);
+	float b = rand(i + vec2(1.0, 0.0));
+	float c = rand(i + vec2(0.0, 1.0));
+	float d = rand(i + vec2(1.0, 1.0));
+
+	vec2 cubic = f * f * (3.0 - 2.0 * f);
+
+	return mix(a, b, cubic.x) + (c - a) * cubic.y * (1.0 - cubic.x) + (d - b) * cubic.x * cubic.y;
+}
+
+float fbm(vec2 coord){
+	float value = 0.0;
+	float scale = 0.5;
+
+	for(int i = 0; i < OCTAVES; i++){
+		value += noise(coord) * scale;
+		coord *= 2.0;
+		scale *= 0.5;
+	}
+	return value;
+}
+
+float egg_shape(vec2 coord, float radius){
+	vec2 diff = abs(coord - center);
+
+	if (coord.y < center.y){
+		diff.y /= 2.0;
+	} else {
+		diff.y *= 2.0;
+	}
+
+	float dist = sqrt(diff.x * diff.x + diff.y * diff.y) / radius;
+	float value = clamp(1.0 - dist, 0.0, 1.0);
+	return clamp(value * value, 0.0, 1.0);
+}
+
+void fragment() {
+	vec2 scaled_coord = UV * 6.0;
+	
+	float warp = UV.y;
+	float dist_from_center = abs(UV.x - 0.5) * 4.0;
+	if (UV.x > 0.5) {
+		warp = 1.0 - warp;
+	}
+	
+	vec2 warp_vec = vec2(warp, 0.0);
+	float motion_fbm = fbm(scaled_coord + vec2(TIME * 0.4, TIME * 1.3)); // used for distorting the smoke_fbm texture
+	float smoke_fbm = fbm(scaled_coord + vec2(0.0, TIME * 1.0) + motion_fbm + warp_vec * dist_from_center);
+	
+	float egg_s = egg_shape(UV, 0.5);
+	
+	float thres = 0.05 ;
+	smoke_fbm *= egg_s;
+	smoke_fbm = clamp(smoke_fbm - thres, 0.0, 1.0) / (1.0 - thres);
+	if (smoke_fbm < 0.1) {
+		smoke_fbm *= smoke_fbm/0.1;
+	}
+	smoke_fbm /= egg_s;
+	smoke_fbm = sqrt(smoke_fbm);
+	smoke_fbm = clamp(smoke_fbm, 0.0, 1.0);
+	
+	COLOR = vec4(smoke_fbm);
+//	COLOR = vec4(vec3(egg_s), 1.0);
+} "
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = SubResource( 2 )
+shader_param/center = Vector2( 0.5, 0.7 )
+shader_param/OCTAVES = 6
+
+[node name="menu" type="Node2D"]
+script = ExtResource( 5 )
+
+[node name="backgroundGroup" type="Node2D" parent="."]
+position = Vector2( -2, 0 )
+
+[node name="background" type="Sprite" parent="backgroundGroup"]
+position = Vector2( 643, 363 )
+scale = Vector2( 0.426, 0.412 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="bubbles" type="Particles2D" parent="backgroundGroup"]
+modulate = Color( 1, 1, 1, 0.380392 )
+position = Vector2( 95, 441 )
+scale = Vector2( 0.1, 0.1 )
+lifetime = 14.8
+speed_scale = 2.0
+process_material = SubResource( 1 )
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="smoke" type="Sprite" parent="backgroundGroup"]
+modulate = Color( 0.596078, 0.905882, 1, 1 )
+material = SubResource( 3 )
+position = Vector2( 162, 645 )
+rotation = -3.01445
+scale = Vector2( 7.75461, 7.24947 )
+texture = ExtResource( 3 )
+offset = Vector2( 5.72849, -10.5785 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="buttonsGroup" type="Node2D" parent="."]
+
+[node name="background_control" type="Control" parent="buttonsGroup"]
+margin_right = 1279.0
+margin_bottom = 720.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="tile" type="Control" parent="buttonsGroup/background_control"]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="menu_tilemap" parent="buttonsGroup/background_control/tile" instance=ExtResource( 4 )]
+position = Vector2( 27, -1 )
+tile_data = PoolIntArray( 524301, 9, 0, 524302, 11, 0, 524303, 10, 0, 524304, 11, 0, 524305, 10, 0, 524306, 11, 0, 524307, 11, 0, 524308, 10, 0, 524309, 11, 0, 524310, 10, 0, 524311, 11, 0, 524312, 12, 0, 589837, 20, 0, 589838, 0, 0, 589839, 1, 0, 589840, 1, 0, 589841, 1, 0, 589842, 1, 0, 589843, 1, 0, 589844, 1, 0, 589845, 1, 0, 589846, 1, 0, 589847, 2, 0, 589848, 14, 0, 655373, 20, 0, 655374, 5, 0, 655375, 4, 0, 655376, 4, 0, 655377, 4, 0, 655378, 4, 0, 655379, 4, 0, 655380, 4, 0, 655381, 4, 0, 655382, 4, 0, 655383, 3, 0, 655384, 13, 0, 720909, 20, 0, 720910, 5, 0, 720911, 4, 0, 720912, 4, 0, 720913, 4, 0, 720914, 4, 0, 720915, 4, 0, 720916, 4, 0, 720917, 4, 0, 720918, 4, 0, 720919, 3, 0, 720920, 13, 0, 786445, 20, 0, 786446, 5, 0, 786447, 4, 0, 786448, 4, 0, 786449, 4, 0, 786450, 4, 0, 786451, 4, 0, 786452, 4, 0, 786453, 4, 0, 786454, 4, 0, 786455, 3, 0, 786456, 13, 0, 851981, 20, 0, 851982, 5, 0, 851983, 4, 0, 851984, 4, 0, 851985, 4, 0, 851986, 4, 0, 851987, 4, 0, 851988, 4, 0, 851989, 4, 0, 851990, 4, 0, 851991, 3, 0, 851992, 13, 0, 917517, 20, 0, 917518, 5, 0, 917519, 4, 0, 917520, 4, 0, 917521, 4, 0, 917522, 4, 0, 917523, 4, 0, 917524, 4, 0, 917525, 4, 0, 917526, 4, 0, 917527, 3, 0, 917528, 13, 0, 983053, 19, 0, 983054, 6, 0, 983055, 7, 0, 983056, 7, 0, 983057, 7, 0, 983058, 7, 0, 983059, 7, 0, 983060, 7, 0, 983061, 7, 0, 983062, 7, 0, 983063, 8, 0, 983064, 13, 0, 1048589, 18, 0, 1048590, 17, 0, 1048591, 17, 0, 1048592, 17, 0, 1048593, 17, 0, 1048594, 17, 0, 1048595, 17, 0, 1048596, 17, 0, 1048597, 17, 0, 1048598, 17, 0, 1048599, 16, 0, 1048600, 15, 0 )
+
+[node name="buttons_control" type="Control" parent="buttonsGroup"]
+margin_left = 478.0
+margin_top = 339.0
+margin_right = 796.0
+margin_bottom = 511.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Start" type="Button" parent="buttonsGroup/buttons_control"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -55.0
+margin_right = 55.0
+margin_bottom = 40.0
+text = "Start"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Creditos" type="Button" parent="buttonsGroup/buttons_control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -55.0
+margin_top = -20.0
+margin_right = 55.0
+margin_bottom = 20.0
+text = "Creditos"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="buttonsGroup/buttons_control/Start" to="." method="_on_Start_pressed"]
+[connection signal="pressed" from="buttonsGroup/buttons_control/Creditos" to="." method="_on_Creditos_pressed"]
