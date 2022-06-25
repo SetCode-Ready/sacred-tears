@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/menu/SacredT-Background-Menu-Art.png" type="Texture" id=1]
 [ext_resource path="res://scenes/interface/menu_tilemap.tscn" type="PackedScene" id=2]
-[ext_resource path="res://icon.png" type="Texture" id=3]
+[ext_resource path="res://assets/menu/labiras.png" type="Texture" id=3]
+[ext_resource path="res://assets/decoration/white_box.png" type="Texture" id=4]
 
 [node name="creditos" type="Node2D"]
 __meta__ = {
@@ -30,12 +31,22 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="background" type="Sprite" parent="control_equipe"]
+modulate = Color( 1, 1, 1, 0.490196 )
+position = Vector2( 91, 105 )
+scale = Vector2( 3.665, 4.22 )
+texture = ExtResource( 4 )
+
 [node name="equipe" type="Label" parent="control_equipe"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -73.0
-margin_right = 73.0
-margin_bottom = 19.0
+margin_left = -76.0
+margin_top = 14.0
+margin_right = 70.0
+margin_bottom = 33.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_as_outline = 0
 text = "Equipe:"
 align = 1
 valign = 1
@@ -43,57 +54,58 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Filipe" type="Label" parent="control_equipe"]
+[node name="Filipe" type="LinkButton" parent="control_equipe"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -45.0
+margin_left = -56.0
 margin_top = -39.5
-margin_right = 45.0
+margin_right = 34.0
 margin_bottom = -25.5
+focus_mode = 2
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
 text = "Filipe Cardoso"
-align = 1
-valign = 1
+underline = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Kaue" type="Label" parent="control_equipe"]
+[node name="Kaue" type="LinkButton" parent="control_equipe"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -45.0
+margin_left = -56.0
 margin_top = -9.5
-margin_right = 58.0
+margin_right = 47.0
 margin_bottom = 4.5
 text = "Kauê Cavalvante"
-align = 1
-valign = 1
+underline = 2
 
-[node name="Cicero" type="Label" parent="control_equipe"]
+[node name="Cicero" type="LinkButton" parent="control_equipe"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -45.0
+margin_left = -56.0
 margin_top = 20.5
-margin_right = -5.0
+margin_right = 47.0
 margin_bottom = 34.5
-text = "Cícero"
-align = 1
-valign = 1
+text = "Cícero Henrique"
+underline = 2
 
-[node name="Emanuel" type="Label" parent="control_equipe"]
+[node name="Emanuel" type="LinkButton" parent="control_equipe"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -45.0
+margin_left = -56.0
 margin_top = 50.5
-margin_right = 10.0
+margin_right = 33.0
 margin_bottom = 64.5
-text = "Emanuel"
-align = 1
-valign = 1
+text = "Emanuel Vitor"
+underline = 2
 
 [node name="control_labiras" type="Control" parent="."]
 margin_left = 342.0
@@ -104,31 +116,22 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="logo_labiras" type="TextureRect" parent="control_labiras"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -32.0
-margin_top = -32.0
-margin_right = 32.0
-margin_bottom = 32.0
+[node name="logo_labiras" type="Sprite" parent="control_labiras"]
+modulate = Color( 0.917647, 0.831373, 0.666667, 1 )
+position = Vector2( 92, 71 )
+scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 3 )
+
+[node name="link_labiras" type="LinkButton" parent="control_labiras"]
+margin_left = 2.0
+margin_top = 48.0
+margin_right = 184.0
+margin_bottom = 99.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="laboratorio" type="Label" parent="control_labiras"]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -27.0
-margin_top = -14.0
-margin_right = 27.0
-text = "LABIRAS"
-
-[node name="Control_assets" type="Control" parent="."]
+[node name="control_assets" type="Control" parent="."]
 margin_left = 549.0
 margin_top = 149.0
 margin_right = 937.0
@@ -137,10 +140,21 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="assets" type="Label" parent="Control_assets"]
+[node name="background" type="Sprite" parent="control_assets"]
+modulate = Color( 1, 1, 1, 0.490196 )
+position = Vector2( 198, 198.5 )
+scale = Vector2( 7.4, 8.1 )
+texture = ExtResource( 4 )
+
+[node name="assets" type="Label" parent="control_assets"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -23.5
-margin_right = 23.5
-margin_bottom = 14.0
+margin_left = -23.0
+margin_top = 21.0
+margin_right = 24.0
+margin_bottom = 35.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "Assets:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
