@@ -383,25 +383,15 @@ tracks/1/keys = {
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 14 ), ExtResource( 13 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 39 ), ExtResource( 42 ) ],
+"frames": [ ExtResource( 41 ), ExtResource( 40 ), ExtResource( 43 ) ],
 "loop": true,
-"name": "Idle",
-"speed": 7.0
+"name": "Jump",
+"speed": 5.0
 }, {
 "frames": [ ExtResource( 38 ), ExtResource( 37 ), ExtResource( 28 ), ExtResource( 25 ), ExtResource( 27 ), ExtResource( 26 ), ExtResource( 29 ), ExtResource( 24 ) ],
 "loop": true,
 "name": "Run",
 "speed": 10.0
-}, {
-"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 11 ), ExtResource( 10 ), ExtResource( 12 ), ExtResource( 1 ) ],
-"loop": true,
-"name": "Attack",
-"speed": 20.0
-}, {
-"frames": [ ExtResource( 41 ), ExtResource( 40 ), ExtResource( 43 ) ],
-"loop": true,
-"name": "Jump",
-"speed": 5.0
 }, {
 "frames": [ ExtResource( 47 ), ExtResource( 45 ), ExtResource( 46 ), ExtResource( 48 ), ExtResource( 49 ), ExtResource( 50 ) ],
 "loop": true,
@@ -412,6 +402,16 @@ animations = [ {
 "loop": true,
 "name": "Death",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 14 ), ExtResource( 13 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 39 ), ExtResource( 42 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 7.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 11 ), ExtResource( 10 ), ExtResource( 12 ), ExtResource( 1 ) ],
+"loop": true,
+"name": "Attack",
+"speed": 20.0
 } ]
 
 [sub_resource type="CapsuleShape2D" id=8]
@@ -478,7 +478,7 @@ position = Vector2( 0.46, -41.6113 )
 scale = Vector2( 0.44, 0.44 )
 texture = ExtResource( 51 )
 
-[node name="Controllers" parent="." instance=ExtResource( 52 )]
+[node name="PlayerHUD" parent="." instance=ExtResource( 52 )]
 
 [node name="timerParticle" type="Timer" parent="."]
 wait_time = 0.3

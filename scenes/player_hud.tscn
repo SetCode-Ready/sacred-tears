@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://assets/hud/buttons/attack_button.png" type="Texture" id=1]
 [ext_resource path="res://assets/hud/buttons/right_button.png" type="Texture" id=2]
@@ -16,6 +16,15 @@
 [ext_resource path="res://assets/hud/player_status_bar/status_bar.png" type="Texture" id=14]
 [ext_resource path="res://assets/hud/player_status_bar/health_bar.png" type="Texture" id=15]
 [ext_resource path="res://assets/hud/player_status_bar/sacred_water_bar.png" type="Texture" id=16]
+[ext_resource path="res://assets/hud/boss_status_bar/boss_status_bar.png" type="Texture" id=17]
+[ext_resource path="res://assets/hud/boss_status_bar/boss_health_bar.png" type="Texture" id=18]
+[ext_resource path="res://themes/default_theme.tres" type="Theme" id=19]
+[ext_resource path="res://assets/font/CompassPro.ttf" type="DynamicFontData" id=20]
+
+[sub_resource type="DynamicFont" id=1]
+size = 40
+outline_size = 2
+font_data = ExtResource( 20 )
 
 [node name="PlayerHud" type="CanvasLayer"]
 
@@ -99,3 +108,31 @@ value = 100.0
 texture_under = ExtResource( 14 )
 texture_progress = ExtResource( 16 )
 texture_progress_offset = Vector2( 39, 14 )
+
+[node name="BossStatusBar" type="Control" parent="."]
+visible = false
+margin_left = 390.0
+margin_top = 23.0
+margin_right = 1072.0
+margin_bottom = 103.0
+
+[node name="BossHealthBar" type="TextureProgress" parent="BossStatusBar"]
+margin_right = 682.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 234, -87 )
+value = 100.0
+texture_under = ExtResource( 17 )
+texture_progress = ExtResource( 18 )
+
+[node name="BossName" type="Label" parent="BossStatusBar"]
+margin_left = 289.0
+margin_top = 41.0
+margin_right = 362.0
+margin_bottom = 56.0
+theme = ExtResource( 19 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "BOSS NAME"
+align = 1
+valign = 1
