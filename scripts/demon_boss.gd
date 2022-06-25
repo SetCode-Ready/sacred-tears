@@ -18,6 +18,7 @@ var can_chase_player = false
 var is_player_on_area_detector = true
 
 var boss_status_bar = null
+var boss_health_bar = null
 
 
 func _physics_process(delta):
@@ -33,8 +34,7 @@ func move():
 	if (can_chase_player):
 		var player = player_detection_zone.player
 		if player != null:
-			boss_status_bar = player.get_node("PlayerHUD").get_node("BossHealthBar")
-			boss_status_bar.visible = true
+			get_boss_status_bar(player)
 			direction = 1 if (player.global_position - global_position).normalized().x > 0 else -1
 			motion.y += GRAVITY
 			motion.x += MAX_SPEED * direction
@@ -47,6 +47,12 @@ func move():
 	
 	motion = move_and_slide(motion)
 	
+
+
+func get_boss_status_bar(player):
+	boss_status_bar = player.get_node("PlayerHUD").get_node("BossStatusBar")
+	boss_health_bar = boss_status_bar.get_node("BossHealthBar")
+	boss_status_bar.visible = true
 
 
 func seek_player():
@@ -62,7 +68,7 @@ func detect_turn_around(x_axis):
 
 
 func _on_PlayerDetector_body_entered(body):
-	boss_status_bar.value -= 10
+	boss_health_bar.value -= 10
 	sprite.play("Attack")
 	is_attacking = true
 
