@@ -1,10 +1,14 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://assets/menu/Bubbles/bubble_3.png" type="Texture" id=1]
 [ext_resource path="res://assets/menu/SacredT-Player-Art.png" type="Texture" id=2]
 [ext_resource path="res://icon.png" type="Texture" id=3]
 [ext_resource path="res://scenes/interface/menu_tilemap.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scripts/menu.gd" type="Script" id=5]
+[ext_resource path="res://themes/compass_font.tres" type="DynamicFontData" id=6]
+[ext_resource path="res://assets/font/CompassPro.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://themes/default_theme.tres" type="Theme" id=8]
+[ext_resource path="res://assets/decoration/white_box.png" type="Texture" id=9]
 
 [sub_resource type="ParticlesMaterial" id=1]
 emission_shape = 1
@@ -110,6 +114,55 @@ shader = SubResource( 2 )
 shader_param/center = Vector2( 0.5, 0.7 )
 shader_param/OCTAVES = 6
 
+[sub_resource type="Theme" id=4]
+
+[sub_resource type="DynamicFont" id=5]
+size = 80
+outline_size = 3
+outline_color = Color( 0, 0.113725, 0.396078, 1 )
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 80
+outline_size = 3
+outline_color = Color( 0, 0.113725, 0.396078, 1 )
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 120
+outline_size = 5
+font_data = ExtResource( 6 )
+
+[sub_resource type="Animation" id=9]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("fade:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "fade"
+tracks/0/type = "value"
+tracks/0/path = NodePath("fade:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
+}
+
 [node name="menu" type="Node2D"]
 script = ExtResource( 5 )
 
@@ -167,10 +220,10 @@ position = Vector2( 27, -1 )
 tile_data = PoolIntArray( 524301, 9, 0, 524302, 11, 0, 524303, 10, 0, 524304, 11, 0, 524305, 10, 0, 524306, 11, 0, 524307, 11, 0, 524308, 10, 0, 524309, 11, 0, 524310, 10, 0, 524311, 11, 0, 524312, 12, 0, 589837, 20, 0, 589838, 0, 0, 589839, 1, 0, 589840, 1, 0, 589841, 1, 0, 589842, 1, 0, 589843, 1, 0, 589844, 1, 0, 589845, 1, 0, 589846, 1, 0, 589847, 2, 0, 589848, 14, 0, 655373, 20, 0, 655374, 5, 0, 655375, 4, 0, 655376, 4, 0, 655377, 4, 0, 655378, 4, 0, 655379, 4, 0, 655380, 4, 0, 655381, 4, 0, 655382, 4, 0, 655383, 3, 0, 655384, 13, 0, 720909, 20, 0, 720910, 5, 0, 720911, 4, 0, 720912, 4, 0, 720913, 4, 0, 720914, 4, 0, 720915, 4, 0, 720916, 4, 0, 720917, 4, 0, 720918, 4, 0, 720919, 3, 0, 720920, 13, 0, 786445, 20, 0, 786446, 5, 0, 786447, 4, 0, 786448, 4, 0, 786449, 4, 0, 786450, 4, 0, 786451, 4, 0, 786452, 4, 0, 786453, 4, 0, 786454, 4, 0, 786455, 3, 0, 786456, 13, 0, 851981, 20, 0, 851982, 5, 0, 851983, 4, 0, 851984, 4, 0, 851985, 4, 0, 851986, 4, 0, 851987, 4, 0, 851988, 4, 0, 851989, 4, 0, 851990, 4, 0, 851991, 3, 0, 851992, 13, 0, 917517, 20, 0, 917518, 5, 0, 917519, 4, 0, 917520, 4, 0, 917521, 4, 0, 917522, 4, 0, 917523, 4, 0, 917524, 4, 0, 917525, 4, 0, 917526, 4, 0, 917527, 3, 0, 917528, 13, 0, 983053, 19, 0, 983054, 6, 0, 983055, 7, 0, 983056, 7, 0, 983057, 7, 0, 983058, 7, 0, 983059, 7, 0, 983060, 7, 0, 983061, 7, 0, 983062, 7, 0, 983063, 8, 0, 983064, 13, 0, 1048589, 18, 0, 1048590, 17, 0, 1048591, 17, 0, 1048592, 17, 0, 1048593, 17, 0, 1048594, 17, 0, 1048595, 17, 0, 1048596, 17, 0, 1048597, 17, 0, 1048598, 17, 0, 1048599, 16, 0, 1048600, 15, 0 )
 
 [node name="buttons_control" type="Control" parent="buttonsGroup"]
-margin_left = 478.0
-margin_top = 339.0
-margin_right = 796.0
-margin_bottom = 511.0
+margin_left = 477.0
+margin_top = 307.0
+margin_right = 795.0
+margin_bottom = 479.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -178,27 +231,57 @@ __meta__ = {
 [node name="Start" type="Button" parent="buttonsGroup/buttons_control"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -55.0
-margin_right = 55.0
-margin_bottom = 40.0
+margin_left = -83.5
+margin_right = 83.5
+margin_bottom = 81.0
+theme = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 text = "Start"
+flat = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Creditos" type="Button" parent="buttonsGroup/buttons_control"]
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -55.0
-margin_top = -20.0
-margin_right = 55.0
-margin_bottom = 20.0
+anchor_bottom = 1.0
+margin_left = -136.0
+margin_top = -81.0
+margin_right = 136.0
+custom_fonts/font = SubResource( 6 )
 text = "Creditos"
+flat = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="name" type="Label" parent="."]
+margin_left = 291.0
+margin_top = 32.0
+margin_right = 926.0
+margin_bottom = 145.0
+theme = ExtResource( 8 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "Sacred Tears"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="fade" type="Sprite" parent="."]
+modulate = Color( 0, 0, 0, 0 )
+position = Vector2( 629.5, 380 )
+scale = Vector2( 26.18, 16.2 )
+texture = ExtResource( 9 )
+
+[node name="animation" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 9 )
+anims/fade = SubResource( 8 )
+
 [connection signal="pressed" from="buttonsGroup/buttons_control/Start" to="." method="_on_Start_pressed"]
 [connection signal="pressed" from="buttonsGroup/buttons_control/Creditos" to="." method="_on_Creditos_pressed"]
+[connection signal="animation_finished" from="animation" to="." method="_on_animation_animation_finished"]
