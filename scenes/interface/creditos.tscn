@@ -1,14 +1,127 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://assets/menu/SacredT-Background-Menu-Art.png" type="Texture" id=1]
 [ext_resource path="res://scenes/interface/menu_tilemap.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/menu/labiras.png" type="Texture" id=3]
 [ext_resource path="res://assets/decoration/white_box.png" type="Texture" id=4]
+[ext_resource path="res://themes/compass_font.tres" type="DynamicFontData" id=5]
+[ext_resource path="res://assets/font/CompassPro.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://assets/hud/buttons/left_button.png" type="Texture" id=7]
+[ext_resource path="res://scripts/creditos.gd" type="Script" id=8]
+
+[sub_resource type="DynamicFont" id=1]
+size = 30
+outline_size = 2
+outline_color = Color( 0.917647, 0.831373, 0.666667, 1 )
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 25
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 25
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 25
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 25
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 25
+outline_size = 1
+outline_color = Color( 0.509804, 0.341176, 0.341176, 1 )
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 25
+outline_size = 1
+outline_color = Color( 0.509804, 0.341176, 0.341176, 1 )
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 25
+outline_size = 1
+outline_color = Color( 0.509804, 0.341176, 0.341176, 1 )
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 25
+outline_size = 1
+outline_color = Color( 0.509804, 0.341176, 0.341176, 1 )
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 25
+outline_size = 1
+outline_color = Color( 0.509804, 0.341176, 0.341176, 1 )
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=11]
+size = 25
+outline_size = 1
+outline_color = Color( 0.509804, 0.341176, 0.341176, 1 )
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=12]
+size = 25
+outline_size = 1
+outline_color = Color( 0.509804, 0.341176, 0.341176, 1 )
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=13]
+size = 25
+outline_size = 1
+outline_color = Color( 0.509804, 0.341176, 0.341176, 1 )
+font_data = ExtResource( 6 )
+
+[sub_resource type="Animation" id=14]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("fade:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=15]
+resource_name = "fade"
+tracks/0/type = "value"
+tracks/0/path = NodePath("fade:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
+}
 
 [node name="creditos" type="Node2D"]
+script = ExtResource( 8 )
 __meta__ = {
 "_edit_horizontal_guides_": [ 318.0, 148.0 ],
-"_edit_vertical_guides_": [ 532.0 ]
+"_edit_vertical_guides_": [ 532.0, 346.0, 752.0 ]
 }
 
 [node name="background" type="Sprite" parent="."]
@@ -44,12 +157,27 @@ margin_left = -76.0
 margin_top = 14.0
 margin_right = 70.0
 margin_bottom = 33.0
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_constants/shadow_as_outline = 0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
 text = "Equipe:"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Emanuel" type="LinkButton" parent="control_equipe"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -71.0
+margin_top = -49.5
+margin_right = 62.0
+margin_bottom = -25.5
+custom_fonts/font = SubResource( 5 )
+text = "Emanuel Vitor"
+underline = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -59,12 +187,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -56.0
-margin_top = -39.5
-margin_right = 34.0
-margin_bottom = -25.5
+margin_left = -77.0
+margin_top = -11.5
+margin_right = 69.0
+margin_bottom = 12.5
 focus_mode = 2
 custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Filipe Cardoso"
 underline = 2
 __meta__ = {
@@ -76,36 +205,33 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -56.0
-margin_top = -9.5
-margin_right = 47.0
-margin_bottom = 4.5
+margin_left = -81.0
+margin_top = 25.5
+margin_right = 76.0
+margin_bottom = 49.5
+rect_pivot_offset = Vector2( 709, 296 )
+custom_fonts/font = SubResource( 3 )
 text = "Kauê Cavalvante"
 underline = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Cicero" type="LinkButton" parent="control_equipe"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -56.0
-margin_top = 20.5
-margin_right = 47.0
-margin_bottom = 34.5
+margin_left = -84.0
+margin_top = 59.5
+margin_right = 77.0
+margin_bottom = 83.5
+custom_fonts/font = SubResource( 4 )
 text = "Cícero Henrique"
 underline = 2
-
-[node name="Emanuel" type="LinkButton" parent="control_equipe"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -56.0
-margin_top = 50.5
-margin_right = 33.0
-margin_bottom = 64.5
-text = "Emanuel Vitor"
-underline = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="control_labiras" type="Control" parent="."]
 margin_left = 342.0
@@ -116,17 +242,23 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="background" type="Sprite" parent="control_labiras"]
+modulate = Color( 1, 1, 1, 0.490196 )
+position = Vector2( 95.5, 82 )
+scale = Vector2( 3.7, 2.68 )
+texture = ExtResource( 4 )
+
 [node name="logo_labiras" type="Sprite" parent="control_labiras"]
-modulate = Color( 0.917647, 0.831373, 0.666667, 1 )
-position = Vector2( 92, 71 )
+modulate = Color( 0.960784, 0.913725, 0.831373, 1 )
+position = Vector2( 97, 78 )
 scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 3 )
 
 [node name="link_labiras" type="LinkButton" parent="control_labiras"]
-margin_left = 2.0
-margin_top = 48.0
-margin_right = 184.0
-margin_bottom = 99.0
+margin_left = 7.0
+margin_top = 38.0
+margin_right = 189.0
+margin_bottom = 125.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -142,19 +274,146 @@ __meta__ = {
 
 [node name="background" type="Sprite" parent="control_assets"]
 modulate = Color( 1, 1, 1, 0.490196 )
-position = Vector2( 198, 198.5 )
-scale = Vector2( 7.4, 8.1 )
+position = Vector2( 199, 199.25 )
+scale = Vector2( 6.96, 7.31 )
 texture = ExtResource( 4 )
 
 [node name="assets" type="Label" parent="control_assets"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -23.0
-margin_top = 21.0
-margin_right = 24.0
-margin_bottom = 35.0
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "Assets:"
+margin_left = -83.0
+margin_top = 24.0
+margin_right = 93.0
+margin_bottom = 53.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "link dos assets:"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="personagem" type="LinkButton" parent="control_assets"]
+margin_left = 87.0
+margin_top = 87.0
+margin_right = 299.0
+margin_bottom = 111.0
+custom_fonts/font = SubResource( 6 )
+text = "personagem principal"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="parallax" type="LinkButton" parent="control_assets"]
+margin_left = 114.0
+margin_top = 124.0
+margin_right = 275.0
+margin_bottom = 148.0
+custom_fonts/font = SubResource( 7 )
+text = "parallax e chão "
+
+[node name="villagers" type="LinkButton" parent="control_assets"]
+margin_left = 140.0
+margin_top = 158.0
+margin_right = 224.0
+margin_bottom = 182.0
+custom_fonts/font = SubResource( 8 )
+text = "villagers"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="decoracao" type="LinkButton" parent="control_assets"]
+margin_left = 103.0
+margin_top = 193.0
+margin_right = 286.0
+margin_bottom = 217.0
+custom_fonts/font = SubResource( 9 )
+text = "decoração cenario"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="demonio_menor" type="LinkButton" parent="control_assets"]
+margin_left = 123.0
+margin_top = 226.0
+margin_right = 266.0
+margin_bottom = 250.0
+custom_fonts/font = SubResource( 10 )
+text = "demônio menor"
+
+[node name="demonio_aracne" type="LinkButton" parent="control_assets"]
+margin_left = 117.0
+margin_top = 261.0
+margin_right = 269.0
+margin_bottom = 285.0
+custom_fonts/font = SubResource( 11 )
+text = "demônio aracne"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="demonio_voador" type="LinkButton" parent="control_assets"]
+margin_left = 117.0
+margin_top = 295.0
+margin_right = 271.0
+margin_bottom = 319.0
+custom_fonts/font = SubResource( 12 )
+text = "demônio voador"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="demonio_boss" type="LinkButton" parent="control_assets"]
+margin_left = 129.0
+margin_top = 330.0
+margin_right = 257.0
+margin_bottom = 354.0
+custom_fonts/font = SubResource( 13 )
+text = "demônio boss"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="button_back" type="Button" parent="."]
+margin_left = 43.0
+margin_top = 26.0
+margin_right = 112.0
+margin_bottom = 95.0
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="sprite" type="Sprite" parent="button_back"]
+position = Vector2( 35, 35 )
+scale = Vector2( 4.125, 4.125 )
+texture = ExtResource( 7 )
+
+[node name="fade" type="Sprite" parent="."]
+visible = false
+modulate = Color( 0, 0, 0, 0 )
+position = Vector2( 629.5, 380 )
+scale = Vector2( 26.18, 16.2 )
+texture = ExtResource( 4 )
+
+[node name="animation" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 14 )
+anims/fade = SubResource( 15 )
+
+[connection signal="pressed" from="control_equipe/Emanuel" to="." method="_on_Emanuel_pressed"]
+[connection signal="pressed" from="control_equipe/Filipe" to="." method="_on_Filipe_pressed"]
+[connection signal="pressed" from="control_equipe/Kaue" to="." method="_on_Kaue_pressed"]
+[connection signal="pressed" from="control_equipe/Cicero" to="." method="_on_Cicero_pressed"]
+[connection signal="pressed" from="control_labiras/link_labiras" to="." method="_on_link_labiras_pressed"]
+[connection signal="pressed" from="control_assets/personagem" to="." method="_on_personagem_pressed"]
+[connection signal="pressed" from="control_assets/parallax" to="." method="_on_parallax_pressed"]
+[connection signal="pressed" from="control_assets/villagers" to="." method="_on_villagers_pressed"]
+[connection signal="pressed" from="control_assets/decoracao" to="." method="_on_decoracao_pressed"]
+[connection signal="pressed" from="control_assets/demonio_menor" to="." method="_on_demonio_menor_pressed"]
+[connection signal="pressed" from="control_assets/demonio_aracne" to="." method="_on_demonio_aracne_pressed"]
+[connection signal="pressed" from="control_assets/demonio_voador" to="." method="_on_demonio_voador_pressed"]
+[connection signal="pressed" from="control_assets/demonio_boss" to="." method="_on_demonio_boss_pressed"]
+[connection signal="pressed" from="button_back" to="." method="_on_button_back_pressed"]
+[connection signal="animation_finished" from="animation" to="." method="_on_animation_animation_finished"]
