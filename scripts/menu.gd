@@ -17,4 +17,4 @@ func _on_animation_animation_finished(anim_name):
 	if press_type == 'creditos':
 		get_tree().change_scene("res://scenes/interface/creditos.tscn")
 	elif press_type == 'start':
-		get_tree().change_scene("res://scenes/levels/fase_01.tscn")
+		get_tree().change_scene("res://scenes/levels/fase_inicial.tscn")
