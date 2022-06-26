@@ -9,6 +9,22 @@
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 9.0
 
+[sub_resource type="AtlasTexture" id=32]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 80, 48 )
+
+[sub_resource type="AtlasTexture" id=33]
+atlas = ExtResource( 2 )
+region = Rect2( 80, 0, 80, 48 )
+
+[sub_resource type="AtlasTexture" id=34]
+atlas = ExtResource( 2 )
+region = Rect2( 160, 0, 80, 48 )
+
+[sub_resource type="AtlasTexture" id=35]
+atlas = ExtResource( 2 )
+region = Rect2( 240, 0, 80, 48 )
+
 [sub_resource type="AtlasTexture" id=26]
 atlas = ExtResource( 1 )
 region = Rect2( 0, 0, 80, 48 )
@@ -32,22 +48,6 @@ region = Rect2( 320, 0, 80, 48 )
 [sub_resource type="AtlasTexture" id=31]
 atlas = ExtResource( 1 )
 region = Rect2( 400, 0, 80, 48 )
-
-[sub_resource type="AtlasTexture" id=32]
-atlas = ExtResource( 2 )
-region = Rect2( 0, 0, 80, 48 )
-
-[sub_resource type="AtlasTexture" id=33]
-atlas = ExtResource( 2 )
-region = Rect2( 80, 0, 80, 48 )
-
-[sub_resource type="AtlasTexture" id=34]
-atlas = ExtResource( 2 )
-region = Rect2( 160, 0, 80, 48 )
-
-[sub_resource type="AtlasTexture" id=35]
-atlas = ExtResource( 2 )
-region = Rect2( 240, 0, 80, 48 )
 
 [sub_resource type="AtlasTexture" id=36]
 atlas = ExtResource( 3 )
@@ -87,15 +87,15 @@ region = Rect2( 640, 0, 80, 48 )
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ) ],
-"loop": true,
-"name": "Death",
-"speed": 5.0
-}, {
 "frames": [ SubResource( 32 ), SubResource( 33 ), SubResource( 34 ), SubResource( 35 ) ],
 "loop": true,
 "name": "Idle",
 "speed": 10.0
+}, {
+"frames": [ SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ) ],
+"loop": true,
+"name": "Death",
+"speed": 5.0
 }, {
 "frames": [ SubResource( 36 ), SubResource( 37 ), SubResource( 38 ), SubResource( 39 ), SubResource( 40 ), SubResource( 41 ), SubResource( 42 ), SubResource( 43 ), SubResource( 44 ) ],
 "loop": true,
