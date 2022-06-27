@@ -41,6 +41,9 @@ var is_moving = false
 
 var is_normal_bullet = true
 
+var thorns = null
+var cooldown_hit = false
+
 func _ready():
 	player_health_bar.value = life
 	player_normal_water_bar.value = normal_water
@@ -48,6 +51,8 @@ func _ready():
 
 
 func _physics_process(delta):
+
+	
 	player_health_bar.value = life
 	player_normal_water_bar.value = normal_water
 	player_sacred_water_bar.value = sacred_water
@@ -68,7 +73,9 @@ func _physics_process(delta):
 	
 	change_type_bullet()
 
-
+	thorns_damage_player()
+	
+	
 func player_move(delta):
 	var x_input = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left") 
 	
@@ -136,6 +143,7 @@ func detect_turn_around():
 	$SpriteAnimation.flip_h = true if is_moving_left else false
 	$SacredEffect.position.x = (8 if is_moving_left else 0)
 	$PlayerCollisionShape.position.x = (8 if is_moving_left else 0)
+	$HitArea/collision.position.x = (8 if is_moving_left else 0)
 	sword.get_node("CollisionShape2D").position.x = (-10 if is_moving_left else 18)
 	
 
@@ -189,3 +197,19 @@ func _on_timerParticle_timeout():
 func _on_Sword_body_entered(body):
 	if body.has_method("take_sword_damage"):
 		body.take_sword_damage(sword_damage)
+
+
+func _on_HitArea_body_entered(body):
+	if body.is_in_group('thorns'):
+		thorns = body
+		thorns_damage_player()
+		
+
+func thorns_damage_player():
+	if thorns != null and $HitArea.overlaps_body(thorns) and not cooldown_hit:
+		$CooldownHit.start()
+		cooldown_hit = true
+		life -= 10
+
+func _on_CooldownHit_timeout():
+	cooldown_hit = false
