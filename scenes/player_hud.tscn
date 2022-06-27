@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://assets/hud/buttons/attack_button.png" type="Texture" id=1]
 [ext_resource path="res://assets/hud/buttons/right_button.png" type="Texture" id=2]
@@ -20,6 +20,8 @@
 [ext_resource path="res://assets/hud/boss_status_bar/boss_health_bar.png" type="Texture" id=18]
 [ext_resource path="res://themes/default_theme.tres" type="Theme" id=19]
 [ext_resource path="res://assets/font/CompassPro.ttf" type="DynamicFontData" id=20]
+[ext_resource path="res://assets/hud/buttons/shot_button.png" type="Texture" id=21]
+[ext_resource path="res://assets/hud/buttons/shot_button_pressed.png" type="Texture" id=22]
 
 [sub_resource type="DynamicFont" id=1]
 size = 40
@@ -45,28 +47,36 @@ passby_press = true
 action = "ui_right"
 
 [node name="JumpButton" type="TouchScreenButton" parent="."]
-position = Vector2( 1163, 578 )
-scale = Vector2( 6.5, 6.5 )
+position = Vector2( 1168, 517 )
+scale = Vector2( 6, 6 )
 normal = ExtResource( 5 )
 pressed = ExtResource( 6 )
 passby_press = true
 action = "ui_accept"
 
 [node name="AttackButton" type="TouchScreenButton" parent="."]
-position = Vector2( 1088, 464 )
-scale = Vector2( 6.5, 6.5 )
+position = Vector2( 1084, 421 )
+scale = Vector2( 6, 6 )
 normal = ExtResource( 1 )
 pressed = ExtResource( 3 )
 passby_press = true
 action = "left_click"
 
 [node name="SwitchWaterTypeButton" type="TouchScreenButton" parent="."]
-position = Vector2( 1005, 578 )
-scale = Vector2( 6.5, 6.5 )
+position = Vector2( 1084, 613 )
+scale = Vector2( 6, 6 )
 normal = ExtResource( 9 )
 pressed = ExtResource( 8 )
 passby_press = true
-action = "right_click"
+action = "change_type_bullet"
+
+[node name="ShotButton" type="TouchScreenButton" parent="."]
+position = Vector2( 1000, 518 )
+scale = Vector2( 6, 6 )
+normal = ExtResource( 21 )
+pressed = ExtResource( 22 )
+passby_press = true
+action = "shoot"
 
 [node name="Pause" type="TouchScreenButton" parent="."]
 position = Vector2( 1180, 20 )

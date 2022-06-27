@@ -66,3 +66,7 @@ func _process(delta):
 	
 	motion.y += GRAVITY * delta
 	motion = move_and_slide(motion, Vector2.UP)
+
+
+func _on_NormalWaterArea_area_entered(area):
+	on_fire = false
