@@ -1,4 +1,4 @@
-[gd_scene load_steps=90 format=2]
+[gd_scene load_steps=95 format=2]
 
 [ext_resource path="res://assets/player/Atack/atack12.png" type="Texture" id=1]
 [ext_resource path="res://assets/player/Atack/atack1.png" type="Texture" id=2]
@@ -148,9 +148,17 @@ priority = 0
 [sub_resource type="AnimationNodeStateMachineTransition" id=38]
 switch_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=39]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=40]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=41]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=42]
+
 [sub_resource type="AnimationNodeStateMachine" id=31]
 states/Attack/node = SubResource( 16 )
-states/Attack/position = Vector2( 168, 291 )
+states/Attack/position = Vector2( 168, 292 )
 states/Death/node = SubResource( 17 )
 states/Death/position = Vector2( -54, 227 )
 states/Idle/node = SubResource( 18 )
@@ -160,18 +168,18 @@ states/IdleAttack/position = Vector2( -7, 76 )
 states/Jump/node = SubResource( 20 )
 states/Jump/position = Vector2( 459, 235 )
 states/Run/node = SubResource( 21 )
-states/Run/position = Vector2( 476, 47 )
-transitions = [ "Idle", "Attack", SubResource( 22 ), "Attack", "Idle", SubResource( 23 ), "Idle", "Run", SubResource( 24 ), "Run", "Idle", SubResource( 25 ), "Idle", "Death", SubResource( 26 ), "Idle", "IdleAttack", SubResource( 27 ), "IdleAttack", "Idle", SubResource( 28 ), "IdleAttack", "Run", SubResource( 29 ), "Run", "Attack", SubResource( 30 ), "Idle", "Jump", SubResource( 33 ), "Jump", "Idle", SubResource( 34 ), "Run", "Jump", SubResource( 35 ), "Jump", "Run", SubResource( 36 ), "Jump", "Attack", SubResource( 37 ), "Attack", "Jump", SubResource( 38 ) ]
+states/Run/position = Vector2( 482, -6 )
+transitions = [ "Idle", "Attack", SubResource( 22 ), "Attack", "Idle", SubResource( 23 ), "Idle", "Run", SubResource( 24 ), "Run", "Idle", SubResource( 25 ), "Idle", "Death", SubResource( 26 ), "Idle", "IdleAttack", SubResource( 27 ), "IdleAttack", "Idle", SubResource( 28 ), "IdleAttack", "Run", SubResource( 29 ), "Run", "Attack", SubResource( 30 ), "Idle", "Jump", SubResource( 33 ), "Jump", "Idle", SubResource( 34 ), "Run", "Jump", SubResource( 35 ), "Jump", "Run", SubResource( 36 ), "Jump", "Attack", SubResource( 37 ), "Attack", "Jump", SubResource( 38 ), "Attack", "Death", SubResource( 39 ), "Jump", "Death", SubResource( 40 ), "IdleAttack", "Death", SubResource( 41 ), "Run", "Death", SubResource( 42 ) ]
 start_node = "Idle"
 end_node = "Death"
-graph_offset = Vector2( -270.581, -6.12101 )
+graph_offset = Vector2( -270.581, 78.947 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=32]
 
 [sub_resource type="Animation" id=11]
 resource_name = "Attack"
 loop = true
-step = 0.06
+step = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:animation")
 tracks/0/interp = 1
@@ -195,6 +203,18 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../Sword/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.42, 0.91 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
 }
 
 [sub_resource type="Animation" id=12]
@@ -224,6 +244,20 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 1.3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "death"
+} ]
 }
 
 [sub_resource type="Animation" id=9]
@@ -351,6 +385,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [ "Idle" ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("../Sword/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
 
 [sub_resource type="Animation" id=15]
 resource_name = "Run"
@@ -383,26 +429,6 @@ tracks/1/keys = {
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 41 ), ExtResource( 40 ), ExtResource( 43 ) ],
-"loop": true,
-"name": "Jump",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 38 ), ExtResource( 37 ), ExtResource( 28 ), ExtResource( 25 ), ExtResource( 27 ), ExtResource( 26 ), ExtResource( 29 ), ExtResource( 24 ) ],
-"loop": true,
-"name": "Run",
-"speed": 10.0
-}, {
-"frames": [ ExtResource( 47 ), ExtResource( 45 ), ExtResource( 46 ), ExtResource( 48 ), ExtResource( 49 ), ExtResource( 50 ) ],
-"loop": true,
-"name": "IdleAttack",
-"speed": 7.0
-}, {
-"frames": [ ExtResource( 19 ), ExtResource( 23 ), ExtResource( 18 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 17 ), ExtResource( 22 ), ExtResource( 32 ), ExtResource( 34 ), ExtResource( 36 ), ExtResource( 30 ), ExtResource( 33 ), ExtResource( 35 ), ExtResource( 31 ) ],
-"loop": true,
-"name": "Death",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 14 ), ExtResource( 13 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 39 ), ExtResource( 42 ) ],
 "loop": true,
 "name": "Idle",
@@ -412,15 +438,38 @@ animations = [ {
 "loop": true,
 "name": "Attack",
 "speed": 20.0
+}, {
+"frames": [ ExtResource( 38 ), ExtResource( 37 ), ExtResource( 28 ), ExtResource( 25 ), ExtResource( 27 ), ExtResource( 26 ), ExtResource( 29 ), ExtResource( 24 ) ],
+"loop": true,
+"name": "Run",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 19 ), ExtResource( 23 ), ExtResource( 18 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 17 ), ExtResource( 22 ), ExtResource( 32 ), ExtResource( 34 ), ExtResource( 36 ), ExtResource( 30 ), ExtResource( 33 ), ExtResource( 35 ), ExtResource( 31 ) ],
+"loop": true,
+"name": "Death",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 47 ), ExtResource( 45 ), ExtResource( 46 ), ExtResource( 48 ), ExtResource( 49 ), ExtResource( 50 ) ],
+"loop": true,
+"name": "IdleAttack",
+"speed": 7.0
+}, {
+"frames": [ ExtResource( 41 ), ExtResource( 40 ), ExtResource( 43 ) ],
+"loop": true,
+"name": "Jump",
+"speed": 5.0
 } ]
 
 [sub_resource type="CapsuleShape2D" id=8]
 radius = 9.25
 height = 14.5
 
-[node name="Player" type="KinematicBody2D"]
+[sub_resource type="RectangleShape2D" id=43]
+extents = Vector2( 5.39329, 10 )
+
+[node name="Player" type="KinematicBody2D" groups=["player"]]
 scale = Vector2( 4, 4 )
-collision_mask = 7
+collision_mask = 135
 script = ExtResource( 44 )
 __meta__ = {
 "_edit_horizontal_guides_": [ -107.0 ],
@@ -483,4 +532,17 @@ texture = ExtResource( 51 )
 [node name="timerParticle" type="Timer" parent="."]
 wait_time = 0.3
 
+[node name="Sword" type="Area2D" parent="."]
+scale = Vector2( 0.99435, 0.997647 )
+collision_layer = 64
+collision_mask = 6
+priority = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sword"]
+position = Vector2( 17.25, -17.25 )
+scale = Vector2( 1.90698, 1.08333 )
+shape = SubResource( 43 )
+disabled = true
+
 [connection signal="timeout" from="timerParticle" to="." method="_on_timerParticle_timeout"]
+[connection signal="body_entered" from="Sword" to="." method="_on_Sword_body_entered"]
