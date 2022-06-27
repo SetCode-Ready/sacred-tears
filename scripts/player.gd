@@ -1,10 +1,23 @@
 extends KinematicBody2D
 
+export var life = 100
+export var normal_water = 100
+export var sacred_water = 100
+export var sword_damage = 10
+export var normal_water_shot_cost = 10
+export var sacred_water_shot_cost = 10
+export var double_jump_cost = 10
+
 onready var particles = get_node("JetpackParticles")
 onready var timer_particle = get_node("timerParticle")
 onready var bulletspawn = get_node("BulletSpawn")
 onready var sacredEffect = get_node("SacredEffect")
 onready var state_machine = $AnimationTree.get("parameters/playback")
+onready var sword = $Sword
+
+onready var player_health_bar = $PlayerHUD/ProgressBarContainer/HealthBar
+onready var player_normal_water_bar = $PlayerHUD/ProgressBarContainer/NormalWaterBar
+onready var player_sacred_water_bar = $PlayerHUD/ProgressBarContainer/SacredWaterBar
 
 const bulletPath = preload("res://scenes/Bullet.tscn")
 
@@ -28,9 +41,20 @@ var is_moving = false
 
 var is_normal_bullet = true
 
+func _ready():
+	player_health_bar.value = life
+	player_normal_water_bar.value = normal_water
+	player_sacred_water_bar.value = sacred_water
 
 
 func _physics_process(delta):
+	player_health_bar.value = life
+	player_normal_water_bar.value = normal_water
+	player_sacred_water_bar.value = sacred_water
+	
+	if life <= 0:
+		state_machine.travel("Death")
+		return
 	
 	player_move(delta)
 	
@@ -91,7 +115,8 @@ func player_jump():
 			can_double_jump = true
 			motion.y = -JUMP_FORCE
 			
-		if not is_on_floor() and can_double_jump and Input.is_action_just_pressed("ui_accept"):
+		if not is_on_floor() and can_double_jump and normal_water >= double_jump_cost and Input.is_action_just_pressed("ui_accept"):
+			normal_water -= double_jump_cost
 			particles.emitting = true
 			timer_particle.start()
 			motion.y = -JUMP_FORCE
@@ -111,6 +136,7 @@ func detect_turn_around():
 	$SpriteAnimation.flip_h = true if is_moving_left else false
 	$SacredEffect.position.x = (8 if is_moving_left else 0)
 	$PlayerCollisionShape.position.x = (8 if is_moving_left else 0)
+	sword.get_node("CollisionShape2D").position.x = (-10 if is_moving_left else 18)
 	
 
 func player_attack():
@@ -118,16 +144,20 @@ func player_attack():
 		state_machine.travel("Attack")
 		
 
-
 func player_shoot(delta):
 	# tecla z atira
-	if Input.is_action_just_pressed("shoot"):
+	if Input.is_action_just_pressed("shoot") and ((is_normal_bullet and normal_water >= normal_water_shot_cost) or (not is_normal_bullet and sacred_water >= sacred_water_shot_cost)):
 		is_shooting = true
 		if not is_moving:
 			state_machine.travel("IdleAttack")
 		
 		var bullet = bulletPath.instance()
 		get_parent().add_child(bullet)
+		
+		if is_normal_bullet:
+			normal_water -= normal_water_shot_cost
+		else:
+			sacred_water -= sacred_water_shot_cost
 		
 		bullet.is_normal = is_normal_bullet
 		
@@ -148,6 +178,14 @@ func change_type_bullet():
 		sacredEffect.visible = !is_normal_bullet
 
 
+func death():
+	get_tree().reload_current_scene()
+
 
 func _on_timerParticle_timeout():
 	particles.emitting = false
+
+
+func _on_Sword_body_entered(body):
+	if body.has_method("take_sword_damage"):
+		body.take_sword_damage(sword_damage)
