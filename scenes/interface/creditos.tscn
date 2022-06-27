@@ -392,7 +392,6 @@ scale = Vector2( 4.125, 4.125 )
 texture = ExtResource( 7 )
 
 [node name="fade" type="Sprite" parent="."]
-visible = false
 modulate = Color( 0, 0, 0, 0 )
 position = Vector2( 629.5, 380 )
 scale = Vector2( 26.18, 16.2 )
