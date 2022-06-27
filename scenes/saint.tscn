@@ -1,10 +1,20 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/decoration/saint.png" type="Texture" id=1]
 [ext_resource path="res://scripts/saint.gd" type="Script" id=2]
+[ext_resource path="res://assets/hud/red_button/Red.png" type="Texture" id=3]
+[ext_resource path="res://assets/hud/red_button/Red 2.png" type="Texture" id=4]
+[ext_resource path="res://assets/hud/red_button/heart.png" type="Texture" id=5]
+[ext_resource path="res://assets/font/CompassPro.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://assets/enemies/enemies_status_bar.png" type="Texture" id=7]
+[ext_resource path="res://assets/enemies/enemies_health_bar.png" type="Texture" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 49.5, 8.625 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 25
+font_data = ExtResource( 6 )
 
 [node name="saint" type="Area2D"]
 script = ExtResource( 2 )
@@ -21,12 +31,50 @@ shape = SubResource( 1 )
 
 [node name="timer" type="Timer" parent="."]
 wait_time = 0.1
+one_shot = true
 
-[node name="Button" type="Button" parent="."]
-margin_left = 107.0
-margin_top = -126.0
-margin_right = 154.0
-margin_bottom = -102.0
+[node name="life_button" type="TouchScreenButton" parent="."]
+visible = false
+position = Vector2( 115, -138 )
+scale = Vector2( 4.5, 4.5 )
+normal = ExtResource( 3 )
+pressed = ExtResource( 4 )
+action = "ui_regen"
+
+[node name="info_button" type="Node2D" parent="."]
+visible = false
+
+[node name="heart" type="Sprite" parent="info_button"]
+modulate = Color( 1, 1, 1, 0.862745 )
+position = Vector2( 161, -109 )
+scale = Vector2( 0.38, 0.374062 )
+texture = ExtResource( 5 )
+
+[node name="Label" type="Label" parent="info_button"]
+modulate = Color( 1, 1, 1, 0.858824 )
+margin_left = 129.0
+margin_top = -122.0
+margin_right = 151.0
+margin_bottom = -98.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "+1"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="life_progres_saint" type="TextureProgress" parent="."]
+margin_left = 6.0
+margin_top = -260.0
+margin_right = 33.0
+margin_bottom = -255.0
+rect_scale = Vector2( 4, 4 )
+max_value = 50.0
+texture_under = ExtResource( 7 )
+texture_progress = ExtResource( 8 )
+tint_progress = Color( 0.219608, 1, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
