@@ -50,8 +50,8 @@ position = Vector2( 7769, 676 )
 [node name="demon_high" parent="." instance=ExtResource( 9 )]
 position = Vector2( 2235, 834 )
 
-[node name="saint" parent="." instance=ExtResource( 10 )]
-position = Vector2( 2074, 580 )
-
 [node name="water" parent="." instance=ExtResource( 11 )]
 position = Vector2( 1795, 541 )
+
+[node name="saint" parent="." instance=ExtResource( 10 )]
+position = Vector2( 2026, 577 )
