@@ -26,6 +26,30 @@ region = Rect2( 160, 0, 80, 48 )
 atlas = ExtResource( 2 )
 region = Rect2( 240, 0, 80, 48 )
 
+[sub_resource type="AtlasTexture" id=26]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 80, 48 )
+
+[sub_resource type="AtlasTexture" id=27]
+atlas = ExtResource( 1 )
+region = Rect2( 80, 0, 80, 48 )
+
+[sub_resource type="AtlasTexture" id=28]
+atlas = ExtResource( 1 )
+region = Rect2( 160, 0, 80, 48 )
+
+[sub_resource type="AtlasTexture" id=29]
+atlas = ExtResource( 1 )
+region = Rect2( 240, 0, 80, 48 )
+
+[sub_resource type="AtlasTexture" id=30]
+atlas = ExtResource( 1 )
+region = Rect2( 320, 0, 80, 48 )
+
+[sub_resource type="AtlasTexture" id=31]
+atlas = ExtResource( 1 )
+region = Rect2( 400, 0, 80, 48 )
+
 [sub_resource type="AtlasTexture" id=36]
 atlas = ExtResource( 3 )
 region = Rect2( 0, 0, 80, 48 )
@@ -62,30 +86,6 @@ region = Rect2( 560, 0, 80, 48 )
 atlas = ExtResource( 3 )
 region = Rect2( 640, 0, 80, 48 )
 
-[sub_resource type="AtlasTexture" id=26]
-atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 80, 48 )
-
-[sub_resource type="AtlasTexture" id=27]
-atlas = ExtResource( 1 )
-region = Rect2( 80, 0, 80, 48 )
-
-[sub_resource type="AtlasTexture" id=28]
-atlas = ExtResource( 1 )
-region = Rect2( 160, 0, 80, 48 )
-
-[sub_resource type="AtlasTexture" id=29]
-atlas = ExtResource( 1 )
-region = Rect2( 240, 0, 80, 48 )
-
-[sub_resource type="AtlasTexture" id=30]
-atlas = ExtResource( 1 )
-region = Rect2( 320, 0, 80, 48 )
-
-[sub_resource type="AtlasTexture" id=31]
-atlas = ExtResource( 1 )
-region = Rect2( 400, 0, 80, 48 )
-
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
 "frames": [ SubResource( 32 ), SubResource( 33 ), SubResource( 34 ), SubResource( 35 ) ],
@@ -93,15 +93,15 @@ animations = [ {
 "name": "Idle",
 "speed": 10.0
 }, {
-"frames": [ SubResource( 36 ), SubResource( 37 ), SubResource( 38 ), SubResource( 39 ), SubResource( 40 ), SubResource( 41 ), SubResource( 42 ), SubResource( 43 ), SubResource( 44 ) ],
-"loop": true,
-"name": "Attack",
-"speed": 10.0
-}, {
 "frames": [ SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ) ],
 "loop": true,
 "name": "Death",
 "speed": 5.0
+}, {
+"frames": [ SubResource( 36 ), SubResource( 37 ), SubResource( 38 ), SubResource( 39 ), SubResource( 40 ), SubResource( 41 ), SubResource( 42 ), SubResource( 43 ), SubResource( 44 ) ],
+"loop": true,
+"name": "Attack",
+"speed": 10.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=24]
@@ -146,6 +146,7 @@ position = Vector2( 21.125, -21.875 )
 shape = SubResource( 25 )
 
 [node name="PlayerDetectionZone" parent="." instance=ExtResource( 4 )]
+tamanho_x = 1.0
 
 [node name="CollisionShape2D" parent="PlayerDetectionZone" index="0"]
 modulate = Color( 1, 1, 1, 0.329412 )
