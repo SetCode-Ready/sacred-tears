@@ -1,4 +1,4 @@
-[gd_scene load_steps=95 format=2]
+[gd_scene load_steps=96 format=2]
 
 [ext_resource path="res://assets/player/Atack/atack12.png" type="Texture" id=1]
 [ext_resource path="res://assets/player/Atack/atack1.png" type="Texture" id=2]
@@ -444,9 +444,9 @@ animations = [ {
 "name": "IdleAttack",
 "speed": 7.0
 }, {
-"frames": [ ExtResource( 19 ), ExtResource( 23 ), ExtResource( 18 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 17 ), ExtResource( 22 ), ExtResource( 32 ), ExtResource( 34 ), ExtResource( 36 ), ExtResource( 30 ), ExtResource( 33 ), ExtResource( 35 ), ExtResource( 31 ) ],
+"frames": [ ExtResource( 41 ), ExtResource( 40 ), ExtResource( 43 ) ],
 "loop": true,
-"name": "Death",
+"name": "Jump",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 11 ), ExtResource( 10 ), ExtResource( 12 ), ExtResource( 1 ) ],
@@ -454,9 +454,9 @@ animations = [ {
 "name": "Attack",
 "speed": 20.0
 }, {
-"frames": [ ExtResource( 41 ), ExtResource( 40 ), ExtResource( 43 ) ],
+"frames": [ ExtResource( 19 ), ExtResource( 23 ), ExtResource( 18 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 17 ), ExtResource( 22 ), ExtResource( 32 ), ExtResource( 34 ), ExtResource( 36 ), ExtResource( 30 ), ExtResource( 33 ), ExtResource( 35 ), ExtResource( 31 ) ],
 "loop": true,
-"name": "Jump",
+"name": "Death",
 "speed": 5.0
 } ]
 
@@ -466,6 +466,10 @@ height = 14.5
 
 [sub_resource type="RectangleShape2D" id=43]
 extents = Vector2( 5.39329, 10 )
+
+[sub_resource type="CapsuleShape2D" id=44]
+radius = 9.75
+height = 14.5
 
 [node name="Player" type="KinematicBody2D" groups=["player"]]
 scale = Vector2( 4, 4 )
@@ -544,5 +548,15 @@ scale = Vector2( 1.90698, 1.08333 )
 shape = SubResource( 43 )
 disabled = true
 
+[node name="HitArea" type="Area2D" parent="."]
+
+[node name="collision" type="CollisionShape2D" parent="HitArea"]
+position = Vector2( -1.75, -16.25 )
+shape = SubResource( 44 )
+
+[node name="CooldownHit" type="Timer" parent="."]
+
 [connection signal="timeout" from="timerParticle" to="." method="_on_timerParticle_timeout"]
 [connection signal="body_entered" from="Sword" to="." method="_on_Sword_body_entered"]
+[connection signal="body_entered" from="HitArea" to="." method="_on_HitArea_body_entered"]
+[connection signal="timeout" from="CooldownHit" to="." method="_on_CooldownHit_timeout"]
