@@ -1,15 +1,13 @@
 extends Area2D
 
+export var damage = 15
+
+onready var sprite = get_node("sprite")
 
 var velocity = Vector2();
 var speed = 400;
-onready var sprite = get_node("sprite")
-# var b = "text"
 var death = false
 var init = true
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
 
 
 func _physics_process(delta):
@@ -32,4 +30,6 @@ func _on_sprite_animation_finished():
 
 
 func _on_demon_bullet_body_entered(body):
+	if body.is_in_group("player"):
+		body.life -= damage
 	death = true

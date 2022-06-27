@@ -1,9 +1,11 @@
 extends KinematicBody2D
 
+export var life = 90
 
 onready var sprite = get_node("sprite")
 onready var cooldown = get_node("cooldown_attack")
 onready var player_detection_zone = get_node("PlayerDetectionZone")
+onready var status_bar = $EnemyStatusBar
 
 const bulletPath = preload("res://scenes/demon_bullet.tscn")
 
@@ -23,7 +25,22 @@ var in_cooldown = false
 
 var delta_var = 0
 
+var is_dead = false
+
+func _ready():
+	status_bar.value = life
+
+
 func _physics_process(delta):
+	status_bar.value = life
+	
+	if life <= 0:
+		is_dead = true
+		death()
+		
+	if is_dead:
+		return
+		
 	delta_var = delta
 	move()
 	
@@ -63,6 +80,11 @@ func detect_turn_around(x_axis):
 	else:
 		scale.x = scale.y * -1
 
+
+func death():
+	sprite.play("death")
+
+
 func instance_bullet(delta):
 		var bullet = bulletPath.instance()
 		get_parent().add_child(bullet)
@@ -85,6 +107,20 @@ func _on_sprite_animation_finished():
 		instance_bullet(delta_var)
 		in_cooldown = true
 		cooldown.start()
+		
+	if sprite.animation == "death":
+		queue_free()
+
 
 func _on_cooldown_attack_timeout():
 	in_cooldown = false
+
+
+func _on_HitArea_area_entered(area):
+	if area.name == "Bullet":
+		if not area.is_normal:
+			life -= area.sacred_water_damage
+
+
+func take_sword_damage(sword_damage):
+	life -= sword_damage
