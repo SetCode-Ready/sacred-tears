@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://tilemaps/tree_paralax.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/player.tscn" type="PackedScene" id=2]
@@ -9,6 +9,8 @@
 [ext_resource path="res://scenes/villager.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/demon.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/demon_high.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/saint.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/water.tscn" type="PackedScene" id=11]
 
 [node name="level01" type="Node2D"]
 __meta__ = {
@@ -47,3 +49,9 @@ position = Vector2( 7769, 676 )
 
 [node name="demon_high" parent="." instance=ExtResource( 9 )]
 position = Vector2( 2235, 834 )
+
+[node name="saint" parent="." instance=ExtResource( 10 )]
+position = Vector2( 2074, 580 )
+
+[node name="water" parent="." instance=ExtResource( 11 )]
+position = Vector2( 1795, 541 )
