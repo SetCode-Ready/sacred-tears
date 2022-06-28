@@ -47,20 +47,15 @@ func _process(delta):
 	$FireParticlesFront.emitting = on_fire
 	$Colision.disabled = !enable_colision
 	
-	if $RayCastR.is_colliding():
-		is_right = false
-	if $RayCastL.is_colliding():
-		is_right = true
-	
 	if is_right:
-		$Sprite.position.x = 26
-		$Sprite.flip_h = false
-	else:
 		$Sprite.position.x = -55
 		$Sprite.flip_h = true
+	else:
+		$Sprite.position.x = 26
+		$Sprite.flip_h = false
 
 	
-	direction_valuant = 1 if is_right else -1
+	direction_valuant = -1 if is_right else 1
 	motion.x += ACCELERATION * direction_valuant
 	motion.x = clamp(motion.x, -max_speed, max_speed)
 	
@@ -69,4 +64,9 @@ func _process(delta):
 
 
 func _on_NormalWaterArea_area_entered(area):
+	max_speed -= 50
 	on_fire = false
+
+
+func _on_DirectionVillager_body_entered(body):
+	is_right = !is_right

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://tilemaps/ground.tscn" type="PackedScene" id=1]
 [ext_resource path="res://tilemaps/tree_paralax.tscn" type="PackedScene" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://scenes/water.tscn" type="PackedScene" id=10]
 [ext_resource path="res://assets/musics/level01.mp3" type="AudioStream" id=11]
 [ext_resource path="res://assets/musics/ambience.mp3" type="AudioStream" id=12]
+[ext_resource path="res://scenes/arachne.tscn" type="PackedScene" id=11]
 
 [node name="fase_inicial" type="Node2D"]
 script = ExtResource( 8 )
@@ -21,12 +22,13 @@ __meta__ = {
 }
 
 [node name="tree_paralax" parent="." instance=ExtResource( 2 )]
+position = Vector2( -13, -15 )
 
 [node name="saint" parent="." instance=ExtResource( 4 )]
 position = Vector2( 2432, 1010 )
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
-position = Vector2( 141, 991 )
+position = Vector2( 581, 984 )
 
 [node name="water" parent="." instance=ExtResource( 10 )]
 position = Vector2( 2208, 1038 )
@@ -41,7 +43,7 @@ tile_data = PoolIntArray( -65381, 0, 196613, -65380, 0, 589829, -65379, 0, 1, -6
 polygon = PoolVector2Array( -3, 1072, 0, -5, 7938, -5, 7924, 1081, 8057, 1081, 8066, -132, -265, -250, -293, 1043 )
 
 [node name="village_props" parent="." instance=ExtResource( 6 )]
-tile_data = PoolIntArray( 1114126, 536870941, 0, 1114128, 29, 0, 1114150, 536870941, 0, 1114152, 5, 0, 1179649, 536870929, 0, 1179666, 536870928, 0, 1179681, 536870929, 0, 1179682, 536870928, 0, 1179697, 536870929, 0, 1179705, 16, 0, 1179706, 17, 0, 1179747, 536870929, 0, 1179748, 17, 0, 1245190, 536870939, 0, 1245191, 536870939, 0, 1245206, 536870932, 0, 1245211, 1, 0, 1245213, 19, 0, 1310728, 536870935, 0, 1310757, 22, 0, 1310781, 536870934, 0, 1310783, 536870935, 0, 1310786, 536870933, 0, 1310787, 23, 0, 1310790, 21, 0, 1310794, 536870934, 0, 1310795, 22, 0, 1310797, 21, 0 )
+tile_data = PoolIntArray( 1114126, 536870941, 0, 1114128, 29, 0, 1114150, 536870941, 0, 1114152, 5, 0, 1179649, 536870929, 0, 1179666, 536870928, 0, 1179681, 536870929, 0, 1179682, 536870928, 0, 1179697, 536870929, 0, 1179705, 16, 0, 1179706, 17, 0, 1179747, 536870929, 0, 1179748, 17, 0, 1245190, 536870939, 0, 1245191, 536870939, 0, 1245206, 536870932, 0, 1245211, 1, 0, 1245213, 19, 0, 1245239, 19, 0, 1310728, 536870935, 0, 1310757, 22, 0, 1310781, 536870934, 0, 1310783, 536870935, 0, 1310786, 536870933, 0, 1310787, 23, 0, 1310790, 21, 0, 1310794, 536870934, 0, 1310795, 22, 0, 1310797, 21, 0 )
 
 [node name="villagers" type="Node2D" parent="."]
 visible = false
@@ -59,10 +61,6 @@ on_fire = false
 max_speed = 100
 enable_colision = false
 
-[node name="popup" parent="." instance=ExtResource( 7 )]
-position = Vector2( 5326, 524 )
-texto_popup = "Para atacar pressione o botão com a espada. Para trocar a munição pressione o botão com duas setas em circulo. "
-
 [node name="portal" parent="." instance=ExtResource( 9 )]
 position = Vector2( 7431, 902 )
 teleport_to_fase = "fase_01"
@@ -76,3 +74,33 @@ autoplay = true
 stream = ExtResource( 12 )
 volume_db = -10.0
 autoplay = true
+[node name="Arachne" parent="." instance=ExtResource( 11 )]
+position = Vector2( 5125, 992 )
+
+[node name="villager" parent="." instance=ExtResource( 5 )]
+position = Vector2( 3575, 939 )
+
+[node name="popups" type="Node2D" parent="."]
+z_index = -3
+
+[node name="ataque_popup" parent="popups" instance=ExtResource( 7 )]
+position = Vector2( 3888, 579 )
+texto_popup = "Para atacar pressione o botão com a espada. Para trocar a munição pressione o botão com duas setas em circulo. "
+
+[node name="jump_popup" parent="popups" instance=ExtResource( 7 )]
+position = Vector2( 1135, 745 )
+texto_popup = "Tantas caixas no caminho,
+e ainda por cima um enorme barranco.
+Acho que um pulo só não vai me fazer chegar do outro lado."
+
+[node name="water_popup" parent="popups" instance=ExtResource( 7 )]
+position = Vector2( 1966, 806 )
+texto_popup = "Hoooo  uma poça para refrescar, e encher meu reservatório.
+E uma santa para iluminar minha jornada dificil. 
+Rezarei perto dela pedindo por saúde e alguma forma de combater meus oponentes."
+
+[node name="popup" parent="popups" instance=ExtResource( 7 )]
+position = Vector2( 2987, 825 )
+texto_popup = "Ohh não esse aldeão foi atacado, preciso ajuda-lo.
+
+Devo lançar alguns tiros d'água para apagar o fogo. ( botão com mira )"

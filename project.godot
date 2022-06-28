@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="Sacred Tears"
-run/main_scene="res://scenes/level01.tscn"
+run/main_scene="res://scenes/interface/menu.tscn"
 config/icon="res://sacred_tears_icon.png"
 
 [display]

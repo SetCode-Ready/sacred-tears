@@ -147,6 +147,7 @@ position = Vector2( 21.125, -21.875 )
 shape = SubResource( 25 )
 
 [node name="PlayerDetectionZone" parent="." instance=ExtResource( 4 )]
+tamanho_x = 1.0
 
 [node name="CollisionShape2D" parent="PlayerDetectionZone" index="0"]
 modulate = Color( 1, 1, 1, 0.329412 )

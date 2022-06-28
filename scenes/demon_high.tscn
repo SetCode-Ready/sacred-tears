@@ -215,7 +215,7 @@ script = ExtResource( 6 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 9 )
 animation = "death"
-frame = 1
+frame = 2
 playing = true
 
 [node name="colision" type="CollisionPolygon2D" parent="."]
@@ -230,6 +230,7 @@ __meta__ = {
 }
 
 [node name="PlayerDetectionZone" parent="." instance=ExtResource( 5 )]
+tamanho_x = 1.2
 
 [node name="cooldown_attack" type="Timer" parent="."]
 wait_time = 3.0
@@ -239,9 +240,7 @@ collision_layer = 4
 collision_mask = 112
 
 [node name="colision" type="CollisionPolygon2D" parent="HitArea"]
-position = Vector2( -9.84375, -0.593742 )
-scale = Vector2( 2.8125, 2.8125 )
-polygon = PoolVector2Array( -24.5, 23.5, 31.5, 23.5, 21.5, 4.5, 15.5, 4.5, 12.5, -5.5, 12.5, -24.5, -11.5, -24.5, -11.5, -17.5, -20.5, -8.5, -20.5, 6.5 )
+polygon = PoolVector2Array( -81, 66, -69, 18, -69, -25, -44, -50, -44, -72, 27, -72, 27, -16, 35, 11, 52, 11, 81, 67, -81, 67 )
 
 [node name="EnemyStatusBar" parent="." instance=ExtResource( 7 )]
 margin_left = -69.0

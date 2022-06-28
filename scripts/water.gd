@@ -11,7 +11,6 @@ func _ready():
 
 
 func _on_water_body_entered(body):
-	print(body.name)
 	if body.name.to_upper() == 'PLAYER':
 		get_node("splash_sound").play()
 		player = body
@@ -21,7 +20,7 @@ func _on_water_body_entered(body):
 
 func _on_cooldown_timeout():
 	if player.normal_water < 100 and in_watter:
-		player.normal_water += 1
+		player.normal_water += 2
 
 
 func _on_water_body_exited(body):

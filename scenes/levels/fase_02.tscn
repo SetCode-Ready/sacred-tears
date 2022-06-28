@@ -9,6 +9,7 @@
 [ext_resource path="res://scenes/saint.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/water.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/musics/ambience.mp3" type="AudioStream" id=9]
+[ext_resource path="res://scenes/demon_boss.tscn" type="PackedScene" id=9]
 
 [node name="fase_02" type="Node2D"]
 
@@ -16,7 +17,7 @@
 position = Vector2( -50, 15 )
 
 [node name="saint" parent="." instance=ExtResource( 7 )]
-position = Vector2( 1187, 433 )
+position = Vector2( 2313, 437 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 586, 952 )
@@ -47,3 +48,5 @@ Não há como voltar, seu destino é enfrentar o que está pela frente."
 stream = ExtResource( 9 )
 volume_db = -10.0
 autoplay = true
+[node name="DemonBoss" parent="." instance=ExtResource( 9 )]
+position = Vector2( 2441, 997 )

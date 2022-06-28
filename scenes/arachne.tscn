@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://assets/enemies/arachne/Arachne_Walk.png" type="Texture" id=1]
 [ext_resource path="res://assets/enemies/arachne/Arachne_Attack.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 9.0
+height = 20.5
 
 [sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 4 )
@@ -123,6 +124,8 @@ extents = Vector2( 9.45828, 10 )
 [sub_resource type="RectangleShape2D" id=25]
 extents = Vector2( 11.375, 5.125 )
 
+[sub_resource type="CapsuleShape2D" id=26]
+
 [node name="Arachne" type="KinematicBody2D"]
 scale = Vector2( 4, 4 )
 collision_layer = 4
@@ -169,7 +172,7 @@ collision_mask = 112
 
 [node name="HitCollisionShape" type="CollisionShape2D" parent="HitArea"]
 position = Vector2( 0, -19 )
-shape = SubResource( 1 )
+shape = SubResource( 26 )
 
 [connection signal="animation_finished" from="Sprite" to="." method="_on_Sprite_animation_finished"]
 [connection signal="body_entered" from="PlayerDetector" to="." method="_on_PlayerDetector_body_entered"]

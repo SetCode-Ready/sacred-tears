@@ -13,7 +13,7 @@ func open_popup():
 
 
 func close_popup():
-	$animation.play_backwards("open")
+	$animation.play("close")
 	
 	
 func _on_opening_area_body_entered(body):

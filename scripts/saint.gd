@@ -35,7 +35,7 @@ func _on_saint_body_exited(body):
 
 func _on_timer_timeout():
 	if player.normal_water > 0 and player.sacred_water < 100 and in_saint:
-		player.sacred_water += 1 
-		player.normal_water -= 1
+		player.sacred_water += 2 
+		player.normal_water -= 2
 
 

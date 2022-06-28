@@ -461,15 +461,15 @@ animations = [ {
 "name": "Death",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 47 ), ExtResource( 45 ), ExtResource( 46 ), ExtResource( 48 ), ExtResource( 49 ), ExtResource( 50 ) ],
-"loop": true,
-"name": "IdleAttack",
-"speed": 7.0
-}, {
 "frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 11 ), ExtResource( 10 ), ExtResource( 12 ), ExtResource( 1 ) ],
 "loop": true,
 "name": "Attack",
 "speed": 20.0
+}, {
+"frames": [ ExtResource( 47 ), ExtResource( 45 ), ExtResource( 46 ), ExtResource( 48 ), ExtResource( 49 ), ExtResource( 50 ) ],
+"loop": true,
+"name": "IdleAttack",
+"speed": 7.0
 } ]
 
 [sub_resource type="CapsuleShape2D" id=8]
