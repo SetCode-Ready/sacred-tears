@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://assets/menu/SacredT-Background-Menu-Art.png" type="Texture" id=1]
 [ext_resource path="res://scenes/interface/menu_tilemap.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://assets/font/CompassPro.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://assets/hud/buttons/left_button.png" type="Texture" id=7]
 [ext_resource path="res://scripts/creditos.gd" type="Script" id=8]
+[ext_resource path="res://assets/musics/credits.mp3" type="AudioStream" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 30
@@ -400,6 +401,10 @@ texture = ExtResource( 4 )
 [node name="animation" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 14 )
 anims/fade = SubResource( 15 )
+
+[node name="background_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+autoplay = true
 
 [connection signal="pressed" from="control_equipe/Emanuel" to="." method="_on_Emanuel_pressed"]
 [connection signal="pressed" from="control_equipe/Filipe" to="." method="_on_Filipe_pressed"]
