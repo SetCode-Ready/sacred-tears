@@ -1,7 +1,6 @@
 extends Node2D
 
 
-onready var tween = get_node("tween")
 onready var text = get_node("text")
 export(String, MULTILINE) var texto_popup
 

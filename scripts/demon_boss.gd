@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-export var life = 200
+export var life = 10
 export var max_life = 200
 export var boss_name = ""
 export var damage = 20
@@ -46,6 +46,7 @@ func _process(delta):
 		
 	if is_attacking:
 		if $AnimatedSprite.frame == 10 and can_hit:
+			get_node("attack_sound").play()
 			can_hit = false
 			hit_player()
 		
@@ -108,6 +109,7 @@ func detect_turn_around(x_axis):
 
 
 func death():
+	$death_sound.play()
 	sprite.play("Death")
 
 
@@ -145,6 +147,7 @@ func hit_player():
 func _on_HitArea_area_entered(area):
 	if area.name == "Bullet":
 		if not area.is_normal:
+			$damage_sound.play()
 			take_hit = true
 			life -= area.sacred_water_damage
 
@@ -160,4 +163,5 @@ func _on_AttackDetector_body_exited(body):
 
 
 func take_sword_damage(sword_damage):
+	$damage_sound.play()
 	life -= sword_damage
