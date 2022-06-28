@@ -82,7 +82,8 @@ func detect_turn_around(x_axis):
 
 
 func _on_PlayerDetector_body_entered(body):
-	$Sprite.play("Attack")
+	get_node("damage_sound").play()
+	$Sprite.play("Attack")	
 	is_attacking = true
 	is_player_on_area_detector = true
 
@@ -94,6 +95,7 @@ func _on_AttackDetector_body_entered(body):
 
 func _on_Sprite_animation_finished():
 	if $Sprite.animation == "Attack" and is_player_on_attack_area:
+		
 		player.life -= damage
 	elif $Sprite.animation == "Attack" and not is_player_on_area_detector:
 		is_attacking = false
@@ -109,6 +111,7 @@ func _on_PlayerDetector_body_exited(body):
 func _on_HitArea_area_entered(area):
 	if area.name == "Bullet":
 		if not area.is_normal:
+			get_node("damage_sound").play()
 			life -= area.sacred_water_damage
 
 

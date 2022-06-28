@@ -17,6 +17,8 @@ func _process(delta):
 
 func _on_saint_body_entered(body):
 	if body.name.to_upper() == 'PLAYER':
+		var chosen = (randi() % $healed_sound.get_child_count()) + 1
+		get_node("healed_sound/healed-" + str(chosen)).play()
 		player = body
 		in_saint = true
 		if life_saint > 0:

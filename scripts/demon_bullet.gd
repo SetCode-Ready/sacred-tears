@@ -31,5 +31,7 @@ func _on_sprite_animation_finished():
 
 func _on_demon_bullet_body_entered(body):
 	if body.is_in_group("player"):
+		var chosen = (randi() % $damage_player_sound.get_child_count()) + 1
+		get_node("damage_player_sound/damage-" + str(chosen)).play()
 		body.life -= damage
 	death = true

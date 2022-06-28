@@ -119,10 +119,13 @@ func player_jump():
 	if Input.is_action_just_pressed("ui_accept"):
 		
 		if is_on_floor():
+			var chosen = (randi() % $jump_sound.get_child_count()) + 1
+			get_node("jump_sound/jump-" + str(chosen)).play()
 			can_double_jump = true
 			motion.y = -JUMP_FORCE
 			
 		if not is_on_floor() and can_double_jump and normal_water >= double_jump_cost and Input.is_action_just_pressed("ui_accept"):
+			get_node("double_jump").play()
 			normal_water -= double_jump_cost
 			particles.emitting = true
 			timer_particle.start()
@@ -149,12 +152,15 @@ func detect_turn_around():
 
 func player_attack():
 	if Input.is_action_just_pressed("left_click"):
+		var chosen = (randi() % $attack_sound.get_child_count()) + 1
+		get_node("attack_sound/attack-" + str(chosen)).play()
 		state_machine.travel("Attack")
 		
 
 func player_shoot(delta):
 	# tecla z atira
 	if Input.is_action_just_pressed("shoot") and ((is_normal_bullet and normal_water >= normal_water_shot_cost) or (not is_normal_bullet and sacred_water >= sacred_water_shot_cost)):
+		get_node("shoot_sound").play()
 		is_shooting = true
 		if not is_moving:
 			state_machine.travel("IdleAttack")
@@ -207,6 +213,8 @@ func _on_HitArea_body_entered(body):
 
 func thorns_damage_player():
 	if thorns != null and $HitArea.overlaps_body(thorns) and not cooldown_hit:
+		var chosen = (randi() % $damage_sound.get_child_count()) + 1
+		get_node("damage_sound/damage-" + str(chosen)).play()
 		$CooldownHit.start()
 		cooldown_hit = true
 		life -= 10

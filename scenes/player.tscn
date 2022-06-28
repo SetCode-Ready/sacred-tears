@@ -1,4 +1,4 @@
-[gd_scene load_steps=96 format=2]
+[gd_scene load_steps=108 format=2]
 
 [ext_resource path="res://assets/player/Atack/atack12.png" type="Texture" id=1]
 [ext_resource path="res://assets/player/Atack/atack1.png" type="Texture" id=2]
@@ -52,6 +52,18 @@
 [ext_resource path="res://assets/player/IdleAtack/IdleJepack6.png" type="Texture" id=50]
 [ext_resource path="res://assets/player/sacred_effect.png" type="Texture" id=51]
 [ext_resource path="res://scenes/player_hud.tscn" type="PackedScene" id=52]
+[ext_resource path="res://assets/sound_effects/player/attack1.wav" type="AudioStream" id=53]
+[ext_resource path="res://assets/sound_effects/player/attack3.wav" type="AudioStream" id=54]
+[ext_resource path="res://assets/sound_effects/player/attack2.wav" type="AudioStream" id=55]
+[ext_resource path="res://assets/sound_effects/player/jump2.wav" type="AudioStream" id=56]
+[ext_resource path="res://assets/sound_effects/player/jump3.wav" type="AudioStream" id=57]
+[ext_resource path="res://assets/sound_effects/player/jump1.wav" type="AudioStream" id=58]
+[ext_resource path="res://assets/sound_effects/player/aqua.wav" type="AudioStream" id=59]
+[ext_resource path="res://assets/sound_effects/player/damaged1.wav" type="AudioStream" id=60]
+[ext_resource path="res://assets/sound_effects/player/damaged3.wav" type="AudioStream" id=61]
+[ext_resource path="res://assets/sound_effects/player/damaged2.wav" type="AudioStream" id=62]
+[ext_resource path="res://assets/sound_effects/player/death.mp3" type="AudioStream" id=63]
+[ext_resource path="res://assets/sound_effects/player/bullet.wav" type="AudioStream" id=64]
 
 [sub_resource type="CanvasItemMaterial" id=7]
 particles_animation = true
@@ -439,25 +451,25 @@ animations = [ {
 "name": "Run",
 "speed": 10.0
 }, {
-"frames": [ ExtResource( 47 ), ExtResource( 45 ), ExtResource( 46 ), ExtResource( 48 ), ExtResource( 49 ), ExtResource( 50 ) ],
-"loop": true,
-"name": "IdleAttack",
-"speed": 7.0
-}, {
 "frames": [ ExtResource( 41 ), ExtResource( 40 ), ExtResource( 43 ) ],
 "loop": true,
 "name": "Jump",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 11 ), ExtResource( 10 ), ExtResource( 12 ), ExtResource( 1 ) ],
-"loop": true,
-"name": "Attack",
-"speed": 20.0
-}, {
 "frames": [ ExtResource( 19 ), ExtResource( 23 ), ExtResource( 18 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 17 ), ExtResource( 22 ), ExtResource( 32 ), ExtResource( 34 ), ExtResource( 36 ), ExtResource( 30 ), ExtResource( 33 ), ExtResource( 35 ), ExtResource( 31 ) ],
 "loop": true,
 "name": "Death",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 47 ), ExtResource( 45 ), ExtResource( 46 ), ExtResource( 48 ), ExtResource( 49 ), ExtResource( 50 ) ],
+"loop": true,
+"name": "IdleAttack",
+"speed": 7.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 11 ), ExtResource( 10 ), ExtResource( 12 ), ExtResource( 1 ) ],
+"loop": true,
+"name": "Attack",
+"speed": 20.0
 } ]
 
 [sub_resource type="CapsuleShape2D" id=8]
@@ -555,6 +567,59 @@ position = Vector2( -1.75, -16.25 )
 shape = SubResource( 44 )
 
 [node name="CooldownHit" type="Timer" parent="."]
+
+[node name="attack_sound" type="Node" parent="."]
+
+[node name="attack-1" type="AudioStreamPlayer" parent="attack_sound"]
+stream = ExtResource( 53 )
+
+[node name="attack-2" type="AudioStreamPlayer" parent="attack_sound"]
+stream = ExtResource( 55 )
+
+[node name="attack-3" type="AudioStreamPlayer" parent="attack_sound"]
+stream = ExtResource( 54 )
+
+[node name="jump_sound" type="Node" parent="."]
+
+[node name="jump-1" type="AudioStreamPlayer" parent="jump_sound"]
+stream = ExtResource( 58 )
+volume_db = -5.0
+
+[node name="jump-2" type="AudioStreamPlayer" parent="jump_sound"]
+stream = ExtResource( 56 )
+volume_db = -5.0
+
+[node name="jump-3" type="AudioStreamPlayer" parent="jump_sound"]
+stream = ExtResource( 57 )
+volume_db = -5.0
+
+[node name="double_jump" type="AudioStreamPlayer2D" parent="."]
+scale = Vector2( 0.25, 0.25 )
+stream = ExtResource( 59 )
+volume_db = 5.0
+
+[node name="damage_sound" type="Node" parent="."]
+
+[node name="damage-1" type="AudioStreamPlayer2D" parent="damage_sound"]
+scale = Vector2( 0.25, 0.25 )
+stream = ExtResource( 60 )
+volume_db = 5.0
+
+[node name="damage-2" type="AudioStreamPlayer2D" parent="damage_sound"]
+scale = Vector2( 0.0625, 0.0625 )
+stream = ExtResource( 62 )
+volume_db = 5.0
+
+[node name="damage-3" type="AudioStreamPlayer2D" parent="damage_sound"]
+scale = Vector2( 0.015625, 0.015625 )
+stream = ExtResource( 61 )
+volume_db = 5.0
+
+[node name="shoot_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 64 )
+
+[node name="death_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 63 )
 
 [connection signal="timeout" from="timerParticle" to="." method="_on_timerParticle_timeout"]
 [connection signal="body_entered" from="Sword" to="." method="_on_Sword_body_entered"]
