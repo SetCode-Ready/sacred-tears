@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-export var life = 200
+export var life = 10
 export var max_life = 200
 export var boss_name = ""
 export var damage = 20
@@ -109,7 +109,7 @@ func detect_turn_around(x_axis):
 
 
 func death():
-	$idle_sound.play()
+	$death_sound.play()
 	sprite.play("Death")
 
 
@@ -146,8 +146,8 @@ func hit_player():
 
 func _on_HitArea_area_entered(area):
 	if area.name == "Bullet":
-		$damage_sound.play()
 		if not area.is_normal:
+			$damage_sound.play()
 			take_hit = true
 			life -= area.sacred_water_damage
 

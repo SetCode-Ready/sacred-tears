@@ -73,11 +73,6 @@ animations = [ {
 "name": "Idle",
 "speed": 8.0
 }, {
-"frames": [ ExtResource( 30 ), ExtResource( 42 ), ExtResource( 22 ), ExtResource( 21 ), ExtResource( 40 ), ExtResource( 18 ), ExtResource( 51 ), ExtResource( 12 ), ExtResource( 31 ), ExtResource( 19 ), ExtResource( 49 ), ExtResource( 44 ) ],
-"loop": true,
-"name": "Walk",
-"speed": 8.0
-}, {
 "frames": [ ExtResource( 33 ), ExtResource( 29 ), ExtResource( 8 ), ExtResource( 53 ), ExtResource( 24 ) ],
 "loop": true,
 "name": "TakeHit",
@@ -92,6 +87,11 @@ animations = [ {
 "loop": true,
 "name": "Death",
 "speed": 10.0
+}, {
+"frames": [ ExtResource( 30 ), ExtResource( 42 ), ExtResource( 22 ), ExtResource( 21 ), ExtResource( 40 ), ExtResource( 18 ), ExtResource( 51 ), ExtResource( 12 ), ExtResource( 31 ), ExtResource( 19 ), ExtResource( 49 ), ExtResource( 44 ) ],
+"loop": true,
+"name": "Walk",
+"speed": 8.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=3]
@@ -149,7 +149,7 @@ stream = ExtResource( 63 )
 [node name="attack_sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 64 )
 
-[node name="idle_sound" type="AudioStreamPlayer" parent="."]
+[node name="death_sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 65 )
 
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
@@ -158,3 +158,4 @@ stream = ExtResource( 65 )
 [connection signal="body_entered" from="AttackDetector" to="." method="_on_AttackDetector_body_entered"]
 [connection signal="body_exited" from="AttackDetector" to="." method="_on_AttackDetector_body_exited"]
 [connection signal="area_entered" from="HitArea" to="." method="_on_HitArea_area_entered"]
+[connection signal="finished" from="death_sound" to="." method="_on_death_sound_finished"]
