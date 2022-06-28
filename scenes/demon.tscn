@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://assets/enemies/demon/Demon_Death.png" type="Texture" id=1]
 [ext_resource path="res://assets/enemies/demon/Demon_Idle.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://scenes/player_detection_zone.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scripts/demon.gd" type="Script" id=5]
 [ext_resource path="res://scenes/enemy_status_bar.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/sound_effects/demon/demon_damage.wav" type="AudioStream" id=7]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 9.0
@@ -162,6 +163,9 @@ collision_mask = 112
 [node name="HitCollisionShape" type="CollisionShape2D" parent="HitArea"]
 position = Vector2( 0, -19 )
 shape = SubResource( 45 )
+
+[node name="damage_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
 
 [connection signal="animation_finished" from="Sprite" to="." method="_on_Sprite_animation_finished"]
 [connection signal="body_entered" from="PlayerDetector" to="." method="_on_PlayerDetector_body_entered"]

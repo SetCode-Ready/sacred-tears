@@ -12,6 +12,7 @@ func _ready():
 
 func _on_water_body_entered(body):
 	if body.name.to_upper() == 'PLAYER':
+		get_node("splash_sound").play()
 		player = body
 		in_watter = true
 		$cooldown.start()

@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://scripts/water.gd" type="Script" id=2]
+[ext_resource path="res://assets/sound_effects/player/splash.wav" type="AudioStream" id=3]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -162,6 +163,9 @@ shape = SubResource( 3 )
 
 [node name="cooldown" type="Timer" parent="."]
 wait_time = 0.1
+
+[node name="splash_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
 
 [connection signal="body_entered" from="." to="." method="_on_water_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_water_body_exited"]

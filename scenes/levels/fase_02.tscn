@@ -8,8 +8,13 @@
 [ext_resource path="res://scenes/saint.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/water.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/demon_boss.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/musics/level02.mp3" type="AudioStream" id=10]
+[ext_resource path="res://assets/musics/demon_ambience.mp3" type="AudioStream" id=11]
+[ext_resource path="res://assets/sound_effects/demon/boss_enter.wav" type="AudioStream" id=12]
+[ext_resource path="res://scripts/fase_02.gd" type="Script" id=13]
 
 [node name="fase_02" type="Node2D"]
+script = ExtResource( 13 )
 
 [node name="tree_paralax" parent="." instance=ExtResource( 4 )]
 position = Vector2( -50, 15 )
@@ -40,3 +45,16 @@ position = Vector2( 4181, 408 )
 
 [node name="DemonBoss" parent="." instance=ExtResource( 9 )]
 position = Vector2( 2441, 997 )
+
+[node name="background_music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+volume_db = -15.0
+autoplay = true
+
+[node name="ambience" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+volume_db = -10.0
+autoplay = true
+
+[node name="level_enter" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )

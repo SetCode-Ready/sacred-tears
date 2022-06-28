@@ -82,11 +82,13 @@ func player_move(delta):
 	if x_input != 0:
 		is_moving = true
 		if not is_attacking or not is_shooting:
+			if not get_node("running_sound/running-1").is_playing() and not state_machine.travel("Jump"):
+				get_node("running_sound/running-1").play()
 			state_machine.travel("Run")
 		motion.x += x_input * ACCELERATION
 		motion.x = clamp(motion.x, -MAX_SPEED, MAX_SPEED)
 		bulletspawn.position.y = -15
-		if x_input > 0:
+		if x_input > 0:	
 			is_moving_left = false
 			bulletspawn.position.x = 20
 			particles.position.x = -10 
@@ -100,6 +102,7 @@ func player_move(delta):
 			particles.process_material.tangential_accel = -100
 			
 	else:
+		get_node("running_sound/running-1").stop()
 		is_moving = false
 		bulletspawn.position.y = -20
 		if not is_attacking or not is_shooting:
@@ -117,12 +120,15 @@ func player_move(delta):
 
 func player_jump():
 	if Input.is_action_just_pressed("ui_accept"):
-		
+		get_node("running_sound/running-1").stop()
 		if is_on_floor():
+			var chosen = (randi() % $jump_sound.get_child_count()) + 1
+			get_node("jump_sound/jump-" + str(chosen)).play()
 			can_double_jump = true
 			motion.y = -JUMP_FORCE
 			
 		if not is_on_floor() and can_double_jump and normal_water >= double_jump_cost and Input.is_action_just_pressed("ui_accept"):
+			get_node("double_jump").play()
 			normal_water -= double_jump_cost
 			particles.emitting = true
 			timer_particle.start()
@@ -149,12 +155,15 @@ func detect_turn_around():
 
 func player_attack():
 	if Input.is_action_just_pressed("left_click"):
+		var chosen = (randi() % $attack_sound.get_child_count()) + 1
+		get_node("attack_sound/attack-" + str(chosen)).play()
 		state_machine.travel("Attack")
 		
 
 func player_shoot(delta):
 	# tecla z atira
 	if Input.is_action_just_pressed("shoot") and ((is_normal_bullet and normal_water >= normal_water_shot_cost) or (not is_normal_bullet and sacred_water >= sacred_water_shot_cost)):
+		get_node("shoot_sound").play()
 		is_shooting = true
 		if not is_moving:
 			state_machine.travel("IdleAttack")
@@ -207,6 +216,8 @@ func _on_HitArea_body_entered(body):
 
 func thorns_damage_player():
 	if thorns != null and $HitArea.overlaps_body(thorns) and not cooldown_hit:
+		var chosen = (randi() % $damage_sound.get_child_count()) + 1
+		get_node("damage_sound/damage-" + str(chosen)).play()
 		$CooldownHit.start()
 		cooldown_hit = true
 		life -= 10
