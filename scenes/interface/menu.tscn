@@ -1,10 +1,11 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://assets/menu/Bubbles/bubble_3.png" type="Texture" id=1]
 [ext_resource path="res://assets/menu/SacredT-Player-Art.png" type="Texture" id=2]
 [ext_resource path="res://icon.png" type="Texture" id=3]
 [ext_resource path="res://scenes/interface/menu_tilemap.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scripts/menu.gd" type="Script" id=5]
+[ext_resource path="res://assets/menu/logo.png" type="Texture" id=6]
 [ext_resource path="res://assets/font/CompassPro.ttf" type="DynamicFontData" id=7]
 [ext_resource path="res://assets/decoration/white_box.png" type="Texture" id=9]
 [ext_resource path="res://assets/musics/menu.mp3" type="AudioStream" id=10]
@@ -260,6 +261,7 @@ __meta__ = {
 [node name="logo" type="Sprite" parent="."]
 position = Vector2( 900, 170 )
 scale = Vector2( 0.772727, 0.772727 )
+texture = ExtResource( 6 )
 
 [node name="fade" type="Sprite" parent="."]
 modulate = Color( 0, 0, 0, 0 )
