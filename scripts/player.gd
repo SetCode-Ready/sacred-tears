@@ -82,11 +82,13 @@ func player_move(delta):
 	if x_input != 0:
 		is_moving = true
 		if not is_attacking or not is_shooting:
+			if not get_node("running_sound/running-1").is_playing() and not state_machine.travel("Jump"):
+				get_node("running_sound/running-1").play()
 			state_machine.travel("Run")
 		motion.x += x_input * ACCELERATION
 		motion.x = clamp(motion.x, -MAX_SPEED, MAX_SPEED)
 		bulletspawn.position.y = -15
-		if x_input > 0:
+		if x_input > 0:	
 			is_moving_left = false
 			bulletspawn.position.x = 20
 			particles.position.x = -10 
@@ -100,6 +102,7 @@ func player_move(delta):
 			particles.process_material.tangential_accel = -100
 			
 	else:
+		get_node("running_sound/running-1").stop()
 		is_moving = false
 		bulletspawn.position.y = -20
 		if not is_attacking or not is_shooting:
@@ -117,7 +120,7 @@ func player_move(delta):
 
 func player_jump():
 	if Input.is_action_just_pressed("ui_accept"):
-		
+		get_node("running_sound/running-1").stop()
 		if is_on_floor():
 			var chosen = (randi() % $jump_sound.get_child_count()) + 1
 			get_node("jump_sound/jump-" + str(chosen)).play()

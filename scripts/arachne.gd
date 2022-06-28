@@ -66,6 +66,7 @@ func start_walk():
 	
 	
 func death():
+	get_node("dead_sound").play()
 	$Sprite.play("Death")
 
 
@@ -96,8 +97,10 @@ func _on_AttackDetector_body_exited(body):
 func _on_HitArea_area_entered(area):
 	if area.name == "Bullet":
 		if not area.is_normal:
+			get_node("damage_sound").play()
 			life -= area.sacred_water_damage
 
 
 func take_sword_damage(sword_damage):
+	get_node("damage_sound").play()
 	life -= sword_damage

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scenes/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://tilemaps/portal.tscn" type="PackedScene" id=2]
@@ -8,10 +8,14 @@
 [ext_resource path="res://tilemaps/ground.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/saint.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/water.tscn" type="PackedScene" id=8]
-[ext_resource path="res://assets/musics/ambience.mp3" type="AudioStream" id=9]
 [ext_resource path="res://scenes/demon_boss.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/musics/level02.mp3" type="AudioStream" id=10]
+[ext_resource path="res://assets/musics/demon_ambience.mp3" type="AudioStream" id=11]
+[ext_resource path="res://assets/sound_effects/demon/boss_enter.wav" type="AudioStream" id=12]
+[ext_resource path="res://scripts/fase_02.gd" type="Script" id=13]
 
 [node name="fase_02" type="Node2D"]
+script = ExtResource( 13 )
 
 [node name="tree_paralax" parent="." instance=ExtResource( 4 )]
 position = Vector2( -50, 15 )
@@ -44,9 +48,18 @@ position = Vector2( 6239, 748 )
 texto_popup = "Você consegue sentir uma energia forte e densa.
 Não há como voltar, seu destino é enfrentar o que está pela frente."
 
-[node name="ambience" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 9 )
-volume_db = -10.0
-autoplay = true
 [node name="DemonBoss" parent="." instance=ExtResource( 9 )]
 position = Vector2( 2441, 997 )
+
+[node name="background_music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+volume_db = -15.0
+autoplay = true
+
+[node name="ambience" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+volume_db = -10.0
+autoplay = true
+
+[node name="level_enter" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )

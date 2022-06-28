@@ -82,7 +82,6 @@ func detect_turn_around(x_axis):
 
 
 func _on_PlayerDetector_body_entered(body):
-	get_node("damage_sound").play()
 	$Sprite.play("Attack")	
 	is_attacking = true
 	is_player_on_area_detector = true
@@ -122,4 +121,5 @@ func _on_AttackDetector_body_exited(body):
 
 
 func take_sword_damage(sword_damage):
+	get_node("damage_sound").play()
 	life -= sword_damage
